@@ -1,0 +1,64 @@
+/* Style for the outer carousel container */
+ngb-carousel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 64px;
+}
+
+/* Style for each individual slide */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Adjust the height as needed */
+}
+
+/* Wrapper for each image and caption */
+.carousel-wrapper {
+  display: flex;
+  background: linear-gradient(
+    270deg,
+    rgba(255, 152, 63, 1) 0%,
+    rgba(255, 102, 0, 1) 100%,
+    rgba(255, 255, 161, 1) 100%
+  );
+  flex-direction: row-reverse;
+  width: 100%; /* Adjust the width as needed */
+  max-height: 453px; /* Set a maximum height if necessary */
+  overflow: hidden; /* Hide overflow if the content is larger than the container */
+  margin-top: 26px;
+}
+
+/* Style for the image within the wrapper */
+.carousel-wrapper img {
+  width: 89%;
+  float: right;
+  height: 107%;
+  object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+.caption {
+  width: 100%;
+  margin: 72px;
+  padding-left: 150px;
+  padding-top: 51px;
+  h4 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    font-family: TondoBold, sans-serif;
+    color: #ffffa1;
+  }
+  p {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.2em;
+    color: #ffffa1;
+  }
+}

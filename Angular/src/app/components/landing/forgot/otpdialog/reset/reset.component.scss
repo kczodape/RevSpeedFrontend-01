@@ -1,0 +1,38 @@
+h2 {
+  padding: 15px 25px;
+  text-align: center;
+  border-bottom: 2px solid #ffffa1;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+form {
+  width: 235px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  input {
+    padding: 7px 15px;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid grey;
+  }
+  button {
+    width: 50%;
+    background: linear-gradient(270deg, rgba(255, 152, 63, 1) 0%, rgba(255, 102, 0, 1) 100%, rgba(255, 255, 161, 1) 100%);;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 3px;
+    color: #ffffa1;
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+  }
+}

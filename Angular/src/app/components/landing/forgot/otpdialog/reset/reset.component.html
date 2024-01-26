@@ -1,0 +1,14 @@
+<h2>Verify Passwords</h2>
+
+<!-- reset.component.html -->
+<form (ngSubmit)="verifyPasswords(passwordForm)" #passwordForm="ngForm">
+  <!-- Your form fields go here -->
+  <div>
+    <input type="password" id="password1" name="password1" ngModel required placeholder="Enter password"/>
+  </div>
+  <div>
+    <input type="password" id="password2" name="password2" ngModel required placeholder="Renter password"/>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

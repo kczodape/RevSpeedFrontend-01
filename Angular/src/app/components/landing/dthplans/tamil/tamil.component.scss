@@ -1,0 +1,125 @@
+/* card-list.component.scss */
+.card-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* Prevent wrapping to ensure horizontal scrolling */
+    gap: 35px;
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    // padding-bottom: 100px; /* Add some padding at the bottom to accommodate the scrollbar */
+    margin: 0 auto; /* Center the card-list and give equal space on both sides */
+    overflow-y: hidden;
+  }
+  
+  .purchace {
+    display: flex;
+    padding-top: 30%;
+    .rental {
+      width: 65%;
+      .price {
+        font-weight: 700;
+        color: #111;
+      }
+    }
+    .buy {
+      width: 35%;
+      #btn {
+        background: linear-gradient(
+          90deg,
+          rgba(194, 29, 3, 1) 31%,
+          rgba(253, 87, 50, 1) 100%,
+          rgba(255, 183, 135, 1) 100%
+        );
+        color: #fff;
+        border-radius: 5px;
+      }
+    }
+  }
+  
+  .card-container {
+    border-radius: 5px;
+    flex: 0 0 calc(33.33% - 16px); /* Three cards per row by default */
+    max-width: calc(18.33% - 16px); /* Limit the maximum width */
+    height: 530px;
+  }
+  
+  #img-container {
+    width: 100%; /* Ensure the image takes 100% of the container width */
+    height: 165px; /* Set a fixed height for consistency, adjust as needed */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+  }
+  
+  mat-card-content {
+    h4 {
+      margin-top: 2%;
+      font-size: 18px;
+      font-weight: 500;
+      font-family: sans-serif;
+      &:hover {
+        color: #19212a;
+        cursor: pointer;
+      }
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+    }
+    h6 {
+      font-size: 15px;
+      font-weight: 100;
+    }
+    .ott {
+      padding: 0;
+      ul {
+        list-style: none;
+        display: flex;
+        padding-left: 0;
+        overflow: auto;
+        li {
+          width: 25%;
+          text-align: center;
+          padding: 0 11px;
+          div {
+            div {
+              img {
+                width: 46px;
+                margin-bottom: 3px;
+                border-radius: 9px;
+                transition: box-shadow 0.3s;
+                &:hover {
+                  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
+                    rgba(0, 0, 0, 0.07) 0px 2px 4px,
+                    rgba(0, 0, 0, 0.07) 0px 4px 8px,
+                    rgba(0, 0, 0, 0.07) 0px 8px 16px,
+                    rgba(0, 0, 0, 0.07) 0px 16px 32px,
+                    rgba(0, 0, 0, 0.07) 0px 32px 64px;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    mat-card-title {
+      font-weight: 100;
+      font-size: 15px;
+    }
+    .price {
+    }
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .card-container {
+      flex: 0 0 calc(50% - 16px); /* Two cards per row on smaller screens */
+      max-width: calc(50% - 16px); /* Limit the maximum width */
+    }
+  }
+  
+  /* Media query for even smaller screens */
+  @media screen and (max-width: 480px) {
+    .card-container {
+      flex: 0 0 100%; /* One card per row on even smaller screens */
+      max-width: 100%; /* No maximum width on the smallest screens */
+    }
+  }

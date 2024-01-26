@@ -1,0 +1,32 @@
+<!-- card-list.component.html -->
+<div class="card-list">
+    <mat-card *ngFor="let card of cards" class="card-container">
+      
+      <img mat-card-image  src="assets/{{card.image}}" alt="{{ card.title }}" id="img-container">
+  
+      <mat-card-content>
+        <h4 class="header">{{ card.title }}</h4>
+        <div class="head">
+          <div class="speed">
+            <mat-card-title class="a">Channels provided</mat-card-title>
+            <mat-card-subtitle class="b">{{ card.No_Of_Channels }}</mat-card-subtitle>
+          </div>
+        </div>
+        <hr>
+        <h6 class="c">{{card?.Channels?.c1}}</h6>
+        <h6 class="d">{{card?.Channels?.c2}}</h6>
+        <h6 class="e">{{card?.Channels?.c3}}</h6>
+        <a href="#">view more Channels</a>
+  
+        <div class="purchace">
+          <div class="rental">
+            <mat-card-subtitle class="price">{{card.rentalSubtitle}}</mat-card-subtitle>
+          </div>
+          <div class="buy">
+            <button mat-raised-button id="btn" class="btn-paln">Add plan</button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+

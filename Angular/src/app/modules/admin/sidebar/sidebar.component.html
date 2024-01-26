@@ -1,0 +1,50 @@
+<mat-toolbar class="toolbar">
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <p routerLink="/" class="logo">RevSpeed</p>
+    <span class="example-spacer"></span>
+    <button (click)="logout()" class="logout">Logout</button>
+</mat-toolbar>
+<mat-drawer-container autosize style="height: 100vh; margin-top: 90px;">
+    <mat-drawer #drawer opened="true" mode="side">
+        <div class="image">
+            <img src="./assets/8.jpg" alt="">
+        </div>
+        <div class="info">
+            <h3>Krunal Zodape</h3>
+            <h5>Admin</h5>
+        </div>
+        <mat-nav-list>
+            <mat-list-item routerLink="dashboard" class="lists">
+                <div class="list-item">
+                    <mat-icon>dashboard</mat-icon> 
+                    <p>Dashboard</p> 
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="broadband" class="lists">
+                <div class="list-item">
+                    <i class="material-icons">&#xe328;</i>
+                    <p>Broadband Service</p> 
+                </div>
+            </mat-list-item>
+            <mat-list-item routerLink="dth" class="lists">
+                <div class="list-item">
+                    <i class="fa-solid fa-satellite-dish"></i> 
+                    <p>DTH Service</p> 
+                </div>
+            </mat-list-item>            
+            <mat-list-item routerLink="subscribers" class="lists">
+                <div class="list-item">
+                    <i class="fa-solid fa-users"></i>
+                    <p>Subscriber</p> 
+                </div>
+            </mat-list-item>            
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

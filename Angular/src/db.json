@@ -1,0 +1,161 @@
+{
+    "subscribers": [
+      { "id": 1, "name": "Krunal Zodape", "email": "krunal@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "Admin" },
+      { "id": 2, "name": "Aakash Solanke", "email": "aakash@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "User" },
+      { "id": 3, "name": "Abhishek Chaure", "email": "abhishek@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "User" },
+      { "id": 4, "name": "Raaghul", "email": "raaghul@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "User" },
+      { "id": 5, "name": "Janani", "email": "janani@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "User" },
+      { "id": 6, "name": "Sneha", "email": "sneha@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "User" },
+      { "id": 7, "name": "Bazeer", "email": "bazeer@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "User" },
+      { "id": 8, "name": "Madhan", "email": "madhan@gmail.com", "phoneNumber": 8530278729, "address": "Khapa", "role": "User" }
+    ],
+    "individualSubscriptions": [
+      { "id": 1, "duration": "Monthly", "days": 28, "planName": "Basic", "speed": "20 MBPS", "price": 10 },
+      { "id": 2, "duration": "Quarterly", "days": 84, "planName": "Standard", "speed": "30 MBPS", "price": 20 },
+      { "id": 3, "duration": "Yearly", "days": 360, "planName": "Entertainment", "speed": "40 MBPS", "price": 30 }
+    ],
+    "businessSubscriptions": [
+      { "id": 1, "duration": "Yearly", "days": 360, "planName": "Basic", "speed": "20 MBPS", "price": 10 },
+      { "id": 2, "duration": "Yearly", "days": 360, "planName": "Standard", "speed": "30 MBPS", "price": 20 }
+    ],
+    "dth": [
+      {
+        "language": "English",
+        "categories": [
+          {
+            "categoryName": "Entertainment",
+            "channels": [
+              { "id": 1, "name": "ABC (American Broadcasting Company)", "price": 5 },
+              { "id": 2, "name": "CBS (Columbia Broadcasting System)", "price": 5 },
+              { "id": 3, "name": "NBC (National Broadcasting Company)", "price": 5 },
+              { "id": 4, "name": "FOX (Fox Broadcasting Company)", "price": 5 },
+              { "id": 5, "name": "The CW", "price": 5 },
+              { "id": 6, "name": "BBC America", "price": 5 },
+              { "id": 7, "name": "FX", "price": 5 },
+              { "id": 8, "name": "HBO (Home Box Office)", "price": 5 },
+              { "id": 9, "name": "AMC (American Movie Classics)", "price": 5 },
+              { "id": 10, "name": "TNT (Turner Network Television)", "price": 5 }
+            ]
+          },
+          {
+            "categoryName": "Sports",
+            "channels": [
+              { "id": 11, "name": "Fox Sports", "price": 6 },
+              { "id": 12, "name": "Sky Sports", "price": 6 },
+              { "id": 13, "name": "NBC Sports", "price": 6 },
+              { "id": 14, "name": "BT Sport", "price": 6 }
+
+            ]
+          },
+          {
+            "categoryName": "News",
+            "channels": [
+              { "id": 15, "name": "CNN (Cable News Network)", "price": 8 },
+              { "id": 16, "name": "BBC News", "price": 8 },
+              { "id": 17, "name": "Sky News", "price": 8 },
+              { "id": 18, "name": "Fox News Channel", "price": 8 },
+              { "id": 19, "name": "Al Jazeera English", "price": 8 }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "Hindi",
+        "categories": [
+          {
+            "categoryName": "Entertainment",
+            "channels": [
+              { "id": 1, "name": "Star Plus", "price": 4 },
+              { "id": 2, "name": "Colors TV", "price": 4 },
+              { "id": 3, "name": "Sony Entertainment Television (SET)", "price": 4 },
+              { "id": 4, "name": "Zee TV", "price": 4 },
+              { "id": 5, "name": "Star Bharat", "price": 4 },
+              { "id": 6, "name": "SAB TV", "price": 4 },
+              { "id": 7, "name": "&TV (AndTV)", "price": 4 },
+              { "id": 8, "name": "Sony Pal", "price": 4 },
+              { "id": 9, "name": "DD National (Doordarshan National)", "price": 4 },
+              { "id": 10, "name": "Rishtey", "price": 4 }
+            ]
+          },
+          {
+            "categoryName": "Sports",
+            "channels": [
+              { "id": 11, "name": "Sports 18", "price": 5 },
+              { "id":12, "name": "Star Sports Hindi", "price": 5 },
+              { "id": 13, "name": "Sony Sports Ten", "price": 5 },
+              { "id": 14, "name": "Star Sports First", "price": 5 }
+
+            ]
+          },
+          {
+            "categoryName": "News",
+            "channels": [
+              { "id": 15, "name": "Aaj Tak", "price": 8 },
+              { "id": 16, "name": "ABP News", "price": 8 },
+              { "id": 17, "name": "India TV", "price": 8 },
+              { "id": 18, "name": "Zee News", "price": 8 },
+              { "id": 19, "name": "News18 India", "price": 8 }
+
+            ]
+          }
+        ]
+      },
+      {
+        "language": "Tamil",
+        "categories": [
+          {
+            "categoryName": "Entertainment",
+            "channels": [
+              { "id": 1, "name": "Sun TV", "price": 2 },
+              { "id": 2, "name": "Vijay TV", "price": 2 },
+              { "id": 3, "name": "Zee Tamil", "price": 2 },
+              { "id": 4, "name": "Colors Tamil", "price": 2 },
+              { "id": 5, "name": "Star Vijay Super", "price": 2 },
+              { "id": 6, "name": "Kalaignar TV", "price": 2 },
+              { "id": 7, "name": "Jaya TV", "price": 2 },
+              { "id": 8, "name": "Makkal TV", "price": 2 },
+              { "id": 9, "name": "Adithya TV", "price": 2 },
+              { "id": 10, "name": "Vasanth TV", "price": 2 }
+            ]
+          },
+          {
+            "categoryName": "Sports",
+            "channels": [
+              { "id":11, "name": "Star Sports Tamil", "price": 3 },
+              { "id": 12, "name": "Star Sports network", "price": 3 },
+              { "id": 13, "name": "Sony Ten", "price": 3 },
+              { "id": 14, "name": "Eurosport", "price": 3 }
+            ]
+          },
+          {
+            "categoryName": "News",
+            "channels": [
+              { "id": 15, "name": "Sun News", "price": 3.5 },
+              { "id": 16, "name": "Puthiya Thalaimurai TV", "price": 3.5 },
+              { "id": 17, "name": "News18 Tamil Nadu", "price": 3.5 },
+              { "id": 18, "name": "Polimer News", "price":3.5 },
+              { "id": 19, "name": "Jaya Plus", "price": 3.5}
+            ]
+          }
+        ]
+      }
+    ],
+    "ott" : [
+      { "id": 1, "ott_platform": "Netflix"},
+      { "id": 2, "ott_platform": "Amazon Prime"},
+      { "id": 3, "ott_platform": "Hotstar"},
+      { "id": 4, "ott_platform": "Hulu"},
+      { "id": 5, "ott_platform": "Sling"}
+    ],
+    "individualPlanTable" : [
+      {"id":1, "planType": "Individual", "planName": "Monthly", "speed":"100 Mbps", "description":"Uninteruppted 3G Data is over and above your plan limit and can be used in 3G Network areas only",  "price":149},
+      {"id":2, "planType": "Individual", "planName": "Quarterly", "speed":"200 Mbps", "description":"Hotstar and OTT subscriptions,Uninteruppted 4G Data is over and above your plan limit and can be used in 4G Network areas only",  "price":249},
+      {"id":3, "planType": "Individual", "planName": "Yearly", "speed":"350 Mbps", "description":"Netflix+Prime Subscriptions, Uninteruppted 5G Data is over and above your plan limit and can be used in 5G Network areas only",  "price":399}
+    ],
+    "businessPlanTable" : [
+      {"id":1, "planType": "Business", "planName": "Monthly", "speed":"350 Mbps", "description":"Single Band router Suitable for light internet usage.",  "price":249},
+      {"id":2, "planType": "Business", "planName": "Quarterly", "speed":"650 Mbps", "description":"Dual Band router Perfect for streaming and online gaming.",  "price":599},
+      {"id":3, "planType": "Business", "planName": "Yearly", "speed":"1050 Mbps", "description":"Multi Band router Ideal for multiple users and 4K streaming.",  "price":1199}
+    ]
+}
+  

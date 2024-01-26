@@ -1,0 +1,4 @@
+{"users": [
+    { "id": 1, "name": "Rupa", "phone_number": 7895632780, "address": "Wardha", "email_id": "rupa@gmail.com", "password": "123456789", "is_broadband": false, "is_dth": false, "role": "user" },
+    { "id": 2, "name": "John Doe", "phone_number": 1234567890, "address": "New York", "email_id": "john.doe@example.com", "password": "password123", "is_broadband": true, "is_dth": true, "role": "admin" }
+]}

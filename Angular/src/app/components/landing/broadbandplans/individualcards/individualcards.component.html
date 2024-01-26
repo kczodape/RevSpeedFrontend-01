@@ -1,0 +1,86 @@
+<!-- card-list.component.html -->
+<div class="card-list">
+  <mat-card *ngFor="let card of cards" class="card-container">
+    <img
+      mat-card-image
+      src="assets/{{ card.image }}"
+      alt="{{ card.title }}"
+      id="img-container"
+    />
+
+    <mat-card-content>
+      <h4 class="header">{{ card.title }}</h4>
+
+      <div class="head">
+        <div class="internet">
+          <mat-card-title class="a">Unlimited</mat-card-title>
+          <mat-card-subtitle class="b">Internet</mat-card-subtitle>
+        </div>
+        <div class="speed">
+          <mat-card-title class="a">{{ card.speed }}</mat-card-title>
+          <mat-card-subtitle class="b">{{ card.subtitle }}</mat-card-subtitle>
+        </div>
+      </div>
+      <hr />
+      <h6 class="c">{{ card.benefits }}</h6>
+
+      <mat-card-header class="ott">
+        <ul>
+          <li *ngIf="card.ott && card.ott.name1">
+            <div>
+              <div>
+                <img [src]="card.ott.logo1" alt="" />
+              </div>
+              {{ card.ott.name1 }}
+            </div>
+          </li>
+          <li *ngIf="card.ott && card.ott.name2">
+            <div>
+              <div>
+                <img [src]="card.ott.logo2" alt="" />
+              </div>
+              <span>
+                {{ card.ott.name2 }}
+              </span>
+            </div>
+          </li>
+          <li *ngIf="card.ott && card.ott.name3">
+            <div>
+              <div>
+                <img [src]="card.ott.logo3" alt="" />
+              </div>
+              {{ card.ott.name3 }}
+            </div>
+          </li>
+
+          <li *ngIf="card.ott && card.ott.name2">
+            <div>
+              <div>
+                <img [src]="card.ott.logo4" alt="" />
+              </div>
+              {{ card.ott.name4 }}
+            </div>
+          </li>
+          <li *ngIf="card.ott && card.ott.name5">
+            <div>
+              <div>
+                <img [src]="card.ott.logo5" alt="" />
+              </div>
+              {{ card.ott.name5 }}
+            </div>
+          </li>
+        </ul>
+      </mat-card-header>
+
+      <div class="purchace">
+        <div class="rental">
+          <mat-card-title>{{ card.rentalTitle }}</mat-card-title>
+          <mat-card-subtitle class="price">{{card.rentalSubtitle}}</mat-card-subtitle>
+        </div>
+        <div class="buy">
+          <button mat-raised-button id="btn" class="btn-paln">Add plan</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

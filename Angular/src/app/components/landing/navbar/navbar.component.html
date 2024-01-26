@@ -1,0 +1,42 @@
+<!-- navbar.component.html -->
+<mat-toolbar class="nav-bar">
+
+  <!-- Logo -->
+  <p routerLink="/">RevSpeed</p>
+  
+  <span class="example-spacer"></span>
+
+  <a mat-button *ngIf="!isSmallScreen" routerLink="/">Home</a>
+  <a mat-button *ngIf="!isSmallScreen" routerLink="/viewmoreplan">BroadBand Service</a>
+  <a mat-button *ngIf="!isSmallScreen">DTH Service</a>
+  <a mat-button *ngIf="!isSmallScreen" routerLink="/aboutus">About Us</a>
+  <a mat-button *ngIf="!isSmallScreen" routerLink="/contact">Contact us</a>
+  <a mat-button *ngIf="!isSmallScreen" routerLink="/profile">Profile</a>
+
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item ><i class="fa-solid fa-user"></i> Profile</button>
+    <button mat-menu-item ><i class="fa-solid fa-money-bill-transfer"></i> Billing</button>
+    <button mat-menu-item (click)="logout()"><i class="fa-solid fa-arrow-right-to-bracket"></i> Logout</button>
+  </mat-menu>
+  
+  <button class="btn login" *ngIf="!isUserLoggedIn" routerLink="/login">Login</button>
+  <button class="btn login" *ngIf="isUserLoggedIn" (click)="logout()">Logout</button>
+  <button class="btn register" *ngIf="!isUserLoggedIn" routerLink="/register">Register</button>
+  <button mat-button [matMenuTriggerFor]="profileMenu" *ngIf="isUserLoggedIn">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <!-- Navigation links inside a button menu for small and extra-small screens -->
+  <button mat-button [matMenuTriggerFor]="menu" *ngIf="isSmallScreen && isUserLoggedIn">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" (closed)="isMenuOpen = false">
+    <a mat-menu-item href="https://www.google.com/">Home</a>
+    <a mat-menu-item href="https://www.google.com/">DTH</a>
+    <a mat-menu-item routerLink="/viewmoreplan">BroadBand</a>
+    <a mat-menu-item href="https://www.google.com/">Contact</a>
+    <a mat-menu-item href="https://www.google.com/">Notification</a>
+    <a mat-menu-item href="https://www.google.com/">Billing</a>
+  </mat-menu>
+
+</mat-toolbar>
