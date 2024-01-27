@@ -15,7 +15,7 @@ export class SubscribersComponent implements AfterViewInit {
   @ViewChild(MatSort) sort = {} as MatSort;
   @ViewChild(MatPaginator) paginator = {} as MatPaginator;
 
-  constructor(private adminService: AdminService, public dialog: MatDialog) {}
+  constructor(private adminService: AdminService, public dialog: MatDialog) { }
 
   displayedColumns: string[] = [
     'id',
@@ -29,15 +29,20 @@ export class SubscribersComponent implements AfterViewInit {
   dataSource = new MatTableDataSource();
 
   ngAfterViewInit() {
+    console.log('ngAfterViewInit called');
     // Fetch data asynchronously using the service
-    this.adminService.getAllSubscribers().subscribe((data) => {
+    this.adminService.getAllCustomers().subscribe((data) => {
       // Assign the data to the dataSource
       this.dataSource.data = data;
-
+      console.log('Data received:', data);
+      console.log('Hii');
       // Set up sorting and pagination
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    });
+    },
+      (error) => {
+        console.error('Error fetchinghhh customers:', error);
+      });
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string) {
@@ -46,7 +51,7 @@ export class SubscribersComponent implements AfterViewInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
-    dialogRef.afterClosed().subscribe((result) => {});
+    dialogRef.afterClosed().subscribe((result) => { });
   }
 
   applyFilter(event: Event) {

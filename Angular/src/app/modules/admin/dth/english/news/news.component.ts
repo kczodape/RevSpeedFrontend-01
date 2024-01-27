@@ -20,25 +20,8 @@ export class NewsComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<Channel>();
 
   ngAfterViewInit() {
-    this.adminService.getAllDTHChannels().subscribe((dthData) => {
-      // Filter only English channels in the "Entertainment" category
-      const englishEntertainmentChannels = dthData
-        .filter((lang) => lang.language === 'English')
-        .flatMap((lang) => lang.categories)
-        .find(
-          (category) => category.categoryName === 'News'
-        )?.channels;
-
-      // Map the channels to a format compatible with MatTableDataSource
-      const channelsData: Channel[] =
-        englishEntertainmentChannels?.map(
-          (channel: { id: any; name: any; price: any }) => ({
-            id: channel.id,
-            name: channel.name,
-            price: channel.price,
-          })
-        ) || [];
-
+    this.adminService.getEnglishNewsChannels().subscribe((channelsData : Channel[]) => {
+      
       // Display the filtered channels in the table
       this.dataSource.data = channelsData;
 
@@ -47,6 +30,7 @@ export class NewsComponent implements AfterViewInit {
       this.dataSource.sort = this.sort;
     });
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
