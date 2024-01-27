@@ -16,13 +16,15 @@ export class BusinessComponent implements AfterViewInit {
 
   constructor(private adminService: AdminService) { }
 
-  displayedColumns: string[] = ['id', 'duration', 'days', 'planName', 'speed', 'price'];
+  displayedColumns: string[] = ['id', 'durationName', 'days', 'planType', 'speed', 'price'];
   dataSource = new MatTableDataSource<IndividualInterface>();
 
   ngAfterViewInit() {
      // Fetch data asynchronously using the service
      this.adminService.getAllBusinessSubscriptions().subscribe((data) => {
       // Assign the data to the dataSource
+      console.log(data);
+      
       this.dataSource.data = data;
 
       // Set up sorting and pagination

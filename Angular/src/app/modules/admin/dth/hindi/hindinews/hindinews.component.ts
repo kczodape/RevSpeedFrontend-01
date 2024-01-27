@@ -21,25 +21,8 @@ export class HindinewsComponent implements AfterViewInit{
   dataSource = new MatTableDataSource<Channel>();
 
   ngAfterViewInit() {
-    this.adminService.getAllDTHChannels().subscribe((dthData) => {
-      // Filter only English channels in the "Entertainment" category
-      const englishEntertainmentChannels = dthData
-        .filter((lang) => lang.language === 'Hindi')
-        .flatMap((lang) => lang.categories)
-        .find(
-          (category) => category.categoryName === 'News'
-        )?.channels;
-
-      // Map the channels to a format compatible with MatTableDataSource
-      const channelsData: Channel[] =
-        englishEntertainmentChannels?.map(
-          (channel: { id: any; name: any; price: any }) => ({
-            id: channel.id,
-            name: channel.name,
-            price: channel.price,
-          })
-        ) || [];
-
+    this.adminService.getHindiNewsChannels().subscribe((channelsData : Channel[]) => {
+      
       // Display the filtered channels in the table
       this.dataSource.data = channelsData;
 
