@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { ViewdetailedbroadbandService } from '../../../../services/viewdetailedbroadband.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { BroadbandPlans } from '../viewdetailedbroadband.component';
+import { IndividualInterface } from '../../../../modules/admin/Interfaces/BroadbandInterface';
+import { AdminService } from '../../../../services/admin.service';
 
 @Component({
   selector: 'app-businessplan',
@@ -14,15 +16,17 @@ export class BusinessplanComponent implements AfterViewInit{
   @ViewChild(MatSort) sort: MatSort = {} as MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator = {} as MatPaginator;
 
-  constructor(private viewPlanService: ViewdetailedbroadbandService) { }
+  constructor(private adminService: AdminService) { }
 
-  displayedColumns: string[] = ['id', 'planType', 'planName', 'speed', 'description', 'price'];
-  dataSource = new MatTableDataSource<BroadbandPlans>();
+  displayedColumns: string[] = ['id', 'durationName', 'days', 'planType', 'speed', 'price'];
+  dataSource = new MatTableDataSource<IndividualInterface>();
 
   ngAfterViewInit() {
      // Fetch data asynchronously using the service
-     this.viewPlanService.getAllBusinessPlans().subscribe((data) => {
+     this.adminService.getAllBusinessSubscriptions().subscribe((data) => {
       // Assign the data to the dataSource
+      console.log(data);
+      
       this.dataSource.data = data;
 
       // Set up sorting and pagination
