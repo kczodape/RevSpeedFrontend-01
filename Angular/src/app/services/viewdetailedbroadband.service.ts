@@ -1,25 +1,57 @@
 import { Injectable } from '@angular/core';
 import { BroadbandPlans } from '../components/landing/viewdetailedbroadband/viewdetailedbroadband.component';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IndividualInterface } from '../modules/admin/Interfaces/BroadbandInterface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ViewdetailedbroadbandService {
 
-  private individualUrl = 'http://localhost:3000/individualPlanTable';
+  private apiUrl = 'http://localhost:3000';
 
-  private businesssUrl = 'http://localhost:3000/businessPlanTable';
+  // private individualUrl = 'http://localhost:3000/individualPlanTable';
+  // private businesssUrl = 'http://localhost:3000/businessPlanTable';
+
+  private serverApiUrl = 'http://localhost:8080/api';
+  jwtToken = sessionStorage.getItem('jwt');
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllIndividualPlans(): Observable<BroadbandPlans[]> {
-    return this.httpClient.get<BroadbandPlans[]>(`${this.individualUrl}`);
+  // getAllIndividualPlans(): Observable<BroadbandPlans[]> {
+  //   return this.httpClient.get<BroadbandPlans[]>(`${this.individualUrl}`);
+  // }
+
+  getAllIndividualSubscriptions(): Observable<IndividualInterface[]> {
+    return this.httpClient.get<IndividualInterface[]>(`${this.apiUrl}/individualSubscriptions`);
   }
 
-  getAllBusinessPlans(): Observable<BroadbandPlans[]> {
-    return this.httpClient.get<BroadbandPlans[]>(`${this.businesssUrl}`);
+  // getAllBusinessPlans(): Observable<BroadbandPlans[]> {
+  //   return this.httpClient.get<BroadbandPlans[]>(`${this.businesssUrl}`);
+  // }
+
+  getAllBusinessSubscriptions(): Observable<IndividualInterface[]> {
+    console.log('Fetching business subscriptions...'+this.jwtToken);
+  
+    if (this.jwtToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.jwtToken}`,
+        'Content-Type': 'application/json',
+      });
+  
+      return this.httpClient
+        .get<IndividualInterface[]>(`${this.serverApiUrl}/business/details`, { headers: headers })
+        .pipe(
+          catchError((error: any) => {
+            console.error('API request failed:', error);
+            return throwError(error);
+          })
+        );
+    } else {
+      console.error('JWT token not found in session storage');
+      return throwError('JWT token not found');
+    }
   }
   
 }
