@@ -47,7 +47,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
-        <button (click)="openDialog('910ms', '750ms')"><i class="fa-solid fa-pen-nib"></i></button>
+        <button (click)="openDialog('910ms', '750ms', element.id)"><i class="fa-solid fa-pen-nib"></i></button>
       </td>
     </ng-container>
   
