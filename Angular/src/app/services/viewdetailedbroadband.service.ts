@@ -11,25 +11,10 @@ export class ViewdetailedbroadbandService {
 
   private apiUrl = 'http://localhost:3000';
 
-  // private individualUrl = 'http://localhost:3000/individualPlanTable';
-  // private businesssUrl = 'http://localhost:3000/businessPlanTable';
-
   private serverApiUrl = 'http://localhost:8080/api';
   jwtToken = sessionStorage.getItem('jwt');
 
   constructor(private httpClient: HttpClient) { }
-
-  // getAllIndividualPlans(): Observable<BroadbandPlans[]> {
-  //   return this.httpClient.get<BroadbandPlans[]>(`${this.individualUrl}`);
-  // }
-
-  getAllIndividualSubscriptions(): Observable<IndividualInterface[]> {
-    return this.httpClient.get<IndividualInterface[]>(`${this.apiUrl}/individualSubscriptions`);
-  }
-
-  // getAllBusinessPlans(): Observable<BroadbandPlans[]> {
-  //   return this.httpClient.get<BroadbandPlans[]>(`${this.businesssUrl}`);
-  // }
 
   getAllBusinessSubscriptions(): Observable<IndividualInterface[]> {
     console.log('Fetching business subscriptions...'+this.jwtToken);

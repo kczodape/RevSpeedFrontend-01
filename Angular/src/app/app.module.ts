@@ -51,6 +51,7 @@ import { ViewdetailedDthplansComponent } from './components/landing/viewdetailed
 import { EntertainmentComponent } from './components/landing/viewdetailed-dthplans/english/entertainment/entertainment.component';
 import { SportsComponent } from './components/landing/viewdetailed-dthplans/english/sports/sports.component';
 import { NewsComponent } from './components/landing/viewdetailed-dthplans/english/news/news.component';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -109,6 +110,7 @@ import { NewsComponent } from './components/landing/viewdetailed-dthplans/englis
     NgbModule,
     NgbCarouselModule,
     HttpClientModule,
+    MatListModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => sessionStorage.getItem('jwt'),
