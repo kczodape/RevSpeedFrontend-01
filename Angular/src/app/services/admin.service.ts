@@ -12,6 +12,8 @@ export class AdminService {
 
   private apiUrl = 'http://localhost:3000';
   private serverApiUrl = 'http://localhost:8080/api';
+  private serverUnauthenticatedApiUrlBroadband = 'http://localhost:8080/broadband';
+  private serverUnauthenticatedOttApi = 'http://localhost:8080/ott';
   jwtToken : string | null = sessionStorage.getItem('jwt');
 
   constructor(private httpClient: HttpClient) { }
@@ -169,41 +171,31 @@ export class AdminService {
   }
 
   // Fetch individual plans
-  getIndividualPlans(): Observable<IndividualInterface[]> {
-    console.log('Fetching individual plans...');
+getIndividualPlans(): Observable<IndividualInterface[]> {
+  console.log('Fetching individual plans...');
 
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
+  if (this.jwtToken) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.jwtToken}`,
+      'Content-Type': 'application/json',
+    });
 
-      return this.httpClient
-        .get<IndividualInterface[]>(`${this.serverApiUrl}/individual/details`, {
-          headers: headers,
+    return this.httpClient
+      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/individual/details`, {
+        headers: headers,
+      })
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
         })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((plans: IndividualInterface[]) => {
-            // Assuming you want to add an 'id' field to each plan
-            // You can modify this part based on your requirements
-            return plans.map((plan, index) => {
-              return {
-                ...plan,
-                // Generate a unique id for each plan (you can use any logic)
-                id: index + 1,
-              };
-            });
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+      );
+  } else {
+    console.error('JWT token not found in session storage');
+    return throwError('JWT token not found');
   }
+}
+
 
   // Fetch OTT platforms
   getOTTPlatformsMapping(): Observable<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]> {
@@ -216,7 +208,7 @@ export class AdminService {
       });
 
       return this.httpClient
-        .get<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]>(`${this.serverApiUrl}/durationOttMappings/all`, {
+        .get<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]>(`${this.serverUnauthenticatedOttApi}/durationOttMappings/all`, {
           headers: headers,
         })
         .pipe(
@@ -250,7 +242,7 @@ export class AdminService {
       });
 
       return this.httpClient
-        .get<IndividualInterface[]>(`${this.serverApiUrl}/business/details`, { headers: headers })
+        .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/business/details`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
