@@ -21,6 +21,7 @@ export class EntertainmentComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.adminService.getEnglishEntertainmentChannels().subscribe((channelsData : Channel[]) => {
+      console.log(channelsData);
       
       // Display the filtered channels in the table
       this.dataSource.data = channelsData;
