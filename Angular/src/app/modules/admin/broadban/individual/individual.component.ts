@@ -8,7 +8,7 @@ import { IndividualInterface } from '../../Interfaces/BroadbandInterface';
 @Component({
   selector: 'app-individual',
   templateUrl: './individual.component.html',
-  styleUrl: './individual.component.scss'
+  styleUrls: ['./individual.component.scss'] // Fix the typo here from "styleUrl" to "styleUrls"
 })
 export class IndividualComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort = {} as MatSort;
@@ -16,25 +16,36 @@ export class IndividualComponent implements AfterViewInit {
 
   constructor(private adminService: AdminService) { }
 
-  displayedColumns: string[] = ['id', 'duration', 'days', 'planName', 'speed', 'ottPlatform', 'price'];
+  displayedColumns: string[] = ['individualId', 'durationName', 'days', 'broadbandPlansName', 'speed', 'ottPlatform', 'price'];
   dataSource = new MatTableDataSource<IndividualInterface>();
-  ottPlatforms: { id: number; ott_platform: string }[] = [];
+
+  ottPlatformsMapping: { durationName: string; ottPlatformsNameMap: Record<string, string> }[] = [];
 
   ngAfterViewInit() {
-     // Fetch data asynchronously using the service
-    this.adminService.getAllIndividualSubscriptions().subscribe((data) => {
-      // Assign the data to the dataSource
+    // Fetch individual plans
+    this.adminService.getIndividualPlans().subscribe((data) => {
+      console.log(data);
+      
       this.dataSource.data = data;
-
-      // Set up sorting and pagination
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
 
-     // Fetch OTT platform data
-     this.adminService.getOTTPlatforms().subscribe((ottPlatforms) => {
-      this.ottPlatforms = ottPlatforms;
+    // Fetch OTT platform data
+    this.adminService.getOTTPlatformsMapping().subscribe((ottPlatformsMapping) => {
+      this.ottPlatformsMapping = ottPlatformsMapping;
     });
+  }
+
+  // Add a method to get OTT platforms based on duration
+  getOttPlatformsForDuration(duration: string): string[] {
+    const durationMapping = this.ottPlatformsMapping.find(mapping => mapping.durationName === duration);
+
+    if (durationMapping) {
+      return Object.values(durationMapping.ottPlatformsNameMap);
+    }
+
+    return [];
   }
 
   applyFilter(event: Event) {

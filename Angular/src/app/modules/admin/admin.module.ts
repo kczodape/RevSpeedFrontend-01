@@ -45,6 +45,8 @@ import { TamilentertainmentComponent } from './dth/tamil/tamilentertainment/tami
 import { TamilsportsComponent } from './dth/tamil/tamilsports/tamilsports.component';
 import { TamilnewsComponent } from './dth/tamil/tamilnews/tamilnews.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -92,7 +94,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatSnackBarModule,
     MatTabsModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule,
   ]
 })
 export class AdminModule { }

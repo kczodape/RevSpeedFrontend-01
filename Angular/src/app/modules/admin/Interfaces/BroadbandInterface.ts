@@ -5,4 +5,5 @@ export interface IndividualInterface {
   planName: string;
   speed: string;
   price: number;
+  ottPlatform?: string;
 }

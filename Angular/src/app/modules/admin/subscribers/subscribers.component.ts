@@ -41,17 +41,23 @@ export class SubscribersComponent implements AfterViewInit {
       this.dataSource.sort = this.sort;
     },
       (error) => {
-        console.error('Error fetchinghhh customers:', error);
+        console.error('Error fetching customers:', error);
       });
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string) {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, customerId: number) {
+    console.log('Selected ID:', customerId);
+  
+    // Store the id in sessionStorage
+    sessionStorage.setItem('id', customerId.toString());
+  
     const dialogRef = this.dialog.open(ConfirmupdatedialogComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
-    dialogRef.afterClosed().subscribe((result) => { });
+  
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   applyFilter(event: Event) {

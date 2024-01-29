@@ -48,6 +48,7 @@ import { EnglishComponent } from './components/landing/dthplans/english/english.
 import { TamilComponent } from './components/landing/dthplans/tamil/tamil.component';
 import { HindiComponent } from './components/landing/dthplans/hindi/hindi.component';
 import { ViewdetailedDthplansComponent } from './components/landing/viewdetailed-dthplans/viewdetailed-dthplans.component';
+
 import { EnglishPlanComponent } from './components/landing/viewdetailed-dthplans/english-plan/english-plan.component';
 import { HindiPlanComponent } from './components/landing/viewdetailed-dthplans/hindi-plan/hindi-plan.component';
 import { TamilPlanComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-plan.component';
@@ -60,6 +61,11 @@ import { HindiSportComponent } from './components/landing/viewdetailed-dthplans/
 import { TamilEntertainmentComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-entertainment/tamil-entertainment.component';
 import { TamilSportsComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-sports/tamil-sports.component';
 import { TamilNewsComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-news/tamil-news.component';
+
+import { EntertainmentComponent } from './components/landing/viewdetailed-dthplans/english/entertainment/entertainment.component';
+import { SportsComponent } from './components/landing/viewdetailed-dthplans/english/sports/sports.component';
+import { NewsComponent } from './components/landing/viewdetailed-dthplans/english/news/news.component';
+import { MatListModule } from '@angular/material/list';
 
 
 
@@ -127,6 +133,7 @@ import { TamilNewsComponent } from './components/landing/viewdetailed-dthplans/t
     NgbModule,
     NgbCarouselModule,
     HttpClientModule,
+    MatListModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => sessionStorage.getItem('jwt'),
