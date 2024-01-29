@@ -173,6 +173,23 @@ export class AdminService {
   // Fetch individual plans
   getIndividualPlans(): Observable<IndividualInterface[]> {
     console.log('Fetching individual plans...');
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+  
+    return this.httpClient
+      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/individual/details`, {
+        headers: headers,
+      })
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        })
+      );
+  }
+  
 
     if (this.jwtToken) {
       const headers = new HttpHeaders({
@@ -200,28 +217,23 @@ export class AdminService {
   // Fetch OTT platforms
   getOTTPlatformsMapping(): Observable<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]> {
     console.log('Fetching OTT platforms mapping...');
-
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]>(`${this.serverUnauthenticatedOttApi}/durationOttMappings/all`, {
-          headers: headers,
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+  
+    return this.httpClient
+      .get<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]>(`${this.serverUnauthenticatedOttApi}/durationOttMappings/all`, {
+        headers: headers,
+      })
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
         })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+      );
   }
+  
 
   // New method to fetch OTT platform data
   // getOTTPlatforms(): Observable<{ id: number; ott_platform: string }[]> {
@@ -234,6 +246,30 @@ export class AdminService {
 
   getAllBusinessSubscriptions(): Observable<IndividualInterface[]> {
     console.log('Fetching business subscriptions...');
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+  
+    return this.httpClient
+      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/business/details`, { headers })
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        }),
+        map((subscriptions: IndividualInterface[]) => {
+          // Assuming you want to add an 'id' field to each subscription
+          // You can modify this part based on your requirements
+          return subscriptions.map((subscription, index) => {
+            return {
+              ...subscription,
+              // Generate a unique id for each subscription (you can use any logic)
+              id: index + 1,
+            };
+          });
+        })
+      );
 
     if (this.jwtToken) {
       const headers = new HttpHeaders({
@@ -254,13 +290,14 @@ export class AdminService {
       return throwError('JWT token not found');
     }
   }
-
-
+  
   getActiveBroadbandCustomers(): Observable<number> {
     console.log('Fetching active broadband customers...');
-
-    const headers = this.createHeaders();
-
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+  
     return this.httpClient
       .get<number>(`${this.serverApiUrl}/active-broadband-customers`, { headers })
       .pipe(
@@ -270,6 +307,7 @@ export class AdminService {
         })
       );
   }
+  
 
   getActiveDthCustomers(): Observable<number> {
     console.log('Fetching active DTH customers...');
