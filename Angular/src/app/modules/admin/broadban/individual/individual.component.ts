@@ -8,7 +8,7 @@ import { IndividualInterface } from '../../Interfaces/BroadbandInterface';
 @Component({
   selector: 'app-individual',
   templateUrl: './individual.component.html',
-  styleUrl: './individual.component.scss'
+  styleUrls: ['./individual.component.scss'] // Fix the typo here from "styleUrl" to "styleUrls"
 })
 export class IndividualComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort = {} as MatSort;
@@ -16,15 +16,16 @@ export class IndividualComponent implements AfterViewInit {
 
   constructor(private adminService: AdminService) { }
 
-  displayedColumns: string[] = ['id', 'durationName', 'days', 'broadbandPlansName', 'speed', 'ottPlatform', 'price'];
+  displayedColumns: string[] = ['individualId', 'durationName', 'days', 'broadbandPlansName', 'speed', 'ottPlatform', 'price'];
   dataSource = new MatTableDataSource<IndividualInterface>();
-  // ottPlatforms: { id: number; ott_platform: string }[] = [];
 
   ottPlatformsMapping: { durationName: string; ottPlatformsNameMap: Record<string, string> }[] = [];
 
   ngAfterViewInit() {
     // Fetch individual plans
     this.adminService.getIndividualPlans().subscribe((data) => {
+      console.log(data);
+      
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
