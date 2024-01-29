@@ -14,7 +14,7 @@ export class AdminService {
   private serverApiUrl = 'http://localhost:8080/api';
   private serverUnauthenticatedApiUrlBroadband = 'http://localhost:8080/broadband';
   private serverUnauthenticatedOttApi = 'http://localhost:8080/ott';
-  jwtToken : string | null = sessionStorage.getItem('jwt');
+  jwtToken: string | null = sessionStorage.getItem('jwt');
 
   constructor(private httpClient: HttpClient) { }
 
@@ -171,30 +171,30 @@ export class AdminService {
   }
 
   // Fetch individual plans
-getIndividualPlans(): Observable<IndividualInterface[]> {
-  console.log('Fetching individual plans...');
+  getIndividualPlans(): Observable<IndividualInterface[]> {
+    console.log('Fetching individual plans...');
 
-  if (this.jwtToken) {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.jwtToken}`,
-      'Content-Type': 'application/json',
-    });
+    if (this.jwtToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.jwtToken}`,
+        'Content-Type': 'application/json',
+      });
 
-    return this.httpClient
-      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/individual/details`, {
-        headers: headers,
-      })
-      .pipe(
-        catchError((error: any) => {
-          console.error('API request failed:', error);
-          return throwError(error);
+      return this.httpClient
+        .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/individual/details`, {
+          headers: headers,
         })
-      );
-  } else {
-    console.error('JWT token not found in session storage');
-    return throwError('JWT token not found');
+        .pipe(
+          catchError((error: any) => {
+            console.error('API request failed:', error);
+            return throwError(error);
+          })
+        );
+    } else {
+      console.error('JWT token not found in session storage');
+      return throwError('JWT token not found');
+    }
   }
-}
 
 
   // Fetch OTT platforms
@@ -247,17 +247,6 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           catchError((error: any) => {
             console.error('API request failed:', error);
             return throwError(error);
-          }),
-          map((subscriptions: IndividualInterface[]) => {
-            // Assuming you want to add an 'id' field to each subscription
-            // You can modify this part based on your requirements
-            return subscriptions.map((subscription, index) => {
-              return {
-                ...subscription,
-                // Generate a unique id for each subscription (you can use any logic)
-                id: index + 1,
-              };
-            });
           })
         );
     } else {
@@ -337,7 +326,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/english/entertainment`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/entertainment`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -345,8 +334,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -369,7 +358,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/english/sport`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/sport`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -377,8 +366,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -399,9 +388,9 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
         'Content-Type': 'application/json',
       });
       console.log(headers);
-      
+
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/english/news`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/news`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -409,8 +398,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -432,7 +421,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/hindi/entertainment`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/entertainment`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -440,8 +429,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -464,7 +453,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/hindi/sport`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/sport`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -472,8 +461,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -495,7 +484,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/hindi/news`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/news`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -503,8 +492,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -528,7 +517,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/tamil/entertainment`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/entertainment`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -536,8 +525,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -560,7 +549,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/tamil/sport`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/sport`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -568,8 +557,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
@@ -591,7 +580,7 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
       });
 
       return this.httpClient
-        .get<any[]>(`${this.serverApiUrl}/channels/tamil/news`, { headers: headers })
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/news`, { headers: headers })
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -599,8 +588,8 @@ getIndividualPlans(): Observable<IndividualInterface[]> {
           }),
           map((channelsData: any[]) => {
             // Extract only the "price" property and add an ID
-            return channelsData.map((channel, index) => ({
-              id: index + 1,  // Generate a simple ID based on the array index
+            return channelsData.map((channel) => ({
+              id: channel.channelId,  // Generate a simple ID based on the array index
               name: channel.channelName,  // Include the channel name if needed
               price: channel.price
             }));
