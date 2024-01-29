@@ -10,6 +10,7 @@ import { AboutusComponent } from './components/landing/aboutus/aboutus.component
 import { ForgotComponent } from './components/landing/forgot/forgot.component';
 import { ContactComponent } from './components/landing/contact/contact.component';
 import { ViewdetailedDthplansComponent } from './components/landing/viewdetailed-dthplans/viewdetailed-dthplans.component';
+import { UserProfileComponent } from './modules/user/dashboard/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path:'viewmoreplan',
     component: ViewdetailedbroadbandComponent
+  },
+  {
+    path:'profile',
+    component: UserProfileComponent
   },
 
   {

@@ -9,6 +9,9 @@ import { UserService } from '../../services/user.service';
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent implements OnInit{
+
+  
+  
   users!: User[];
   userForm!: FormGroup;
   newUserForm!: FormGroup;
