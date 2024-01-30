@@ -43,6 +43,7 @@
           id="btn1"
           class="plan-tab-view-more-btn"
           routerLink="/viewmoreplan"
+          (click)="openDialog(element.businessId, element.days)"
         >
           Rs.{{ element.price }}/-
         </button>
