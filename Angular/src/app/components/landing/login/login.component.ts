@@ -47,7 +47,7 @@ export class LoginComponent {
             if (role == 'ADMIN') {
               this.router.navigateByUrl('/admin');
             } else if (role == 'USER') {
-              this.router.navigateByUrl('/user');
+              this.router.navigateByUrl('/landing');
             } else {
               alert('Not authenticated person');
               this.router.navigateByUrl('/login');
@@ -74,4 +74,6 @@ export class LoginComponent {
       })
     );
   }
+
+  
 }

@@ -170,134 +170,11 @@ export class AdminService {
     }
   }
 
-  // Fetch individual plans
-  getIndividualPlans(): Observable<IndividualInterface[]> {
-    console.log('Fetching individual plans...');
-  
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-  
-    return this.httpClient
-      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/individual/details`, {
-        headers: headers,
-      })
-      .pipe(
-        catchError((error: any) => {
-          console.error('API request failed:', error);
-          return throwError(error);
-        })
-      );
-  }
-  
-
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/individual/details`, {
-          headers: headers,
-        })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
-  }
-
-
-  // Fetch OTT platforms
-  getOTTPlatformsMapping(): Observable<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]> {
-    console.log('Fetching OTT platforms mapping...');
-  
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-  
-    return this.httpClient
-      .get<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]>(`${this.serverUnauthenticatedOttApi}/durationOttMappings/all`, {
-        headers: headers,
-      })
-      .pipe(
-        catchError((error: any) => {
-          console.error('API request failed:', error);
-          return throwError(error);
-        })
-      );
-  }
-  
-
-  // New method to fetch OTT platform data
-  // getOTTPlatforms(): Observable<{ id: number; ott_platform: string }[]> {
-  //   return this.httpClient.get<{ id: number; ott_platform: string }[]>(`${this.apiUrl}/ott`);
-  // }
-
-  // getAllBusinessSubscriptions(): Observable<IndividualInterface[]> {
-  //   return this.httpClient.get<IndividualInterface[]>(`${this.apiUrl}/businessSubscriptions`);
-  // }
-
-  getAllBusinessSubscriptions(): Observable<IndividualInterface[]> {
-    console.log('Fetching business subscriptions...');
-  
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-  
-    return this.httpClient
-      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/business/details`, { headers })
-      .pipe(
-        catchError((error: any) => {
-          console.error('API request failed:', error);
-          return throwError(error);
-        }),
-        map((subscriptions: IndividualInterface[]) => {
-          // Assuming you want to add an 'id' field to each subscription
-          // You can modify this part based on your requirements
-          return subscriptions.map((subscription, index) => {
-            return {
-              ...subscription,
-              // Generate a unique id for each subscription (you can use any logic)
-              id: index + 1,
-            };
-          });
-        })
-      );
-
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/business/details`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
-  }
-  
   getActiveBroadbandCustomers(): Observable<number> {
     console.log('Fetching active broadband customers...');
-  
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-  
+
+    const headers = this.createHeaders();
+
     return this.httpClient
       .get<number>(`${this.serverApiUrl}/active-broadband-customers`, { headers })
       .pipe(
@@ -307,7 +184,7 @@ export class AdminService {
         })
       );
   }
-  
+
 
   getActiveDthCustomers(): Observable<number> {
     console.log('Fetching active DTH customers...');
@@ -349,6 +226,56 @@ export class AdminService {
     return this.httpClient.put(url, {}, { headers });
   }
 
+  // Fetch individual plans
+  getIndividualPlans(): Observable<IndividualInterface[]> {
+    console.log('Fetching individual plans...');
+
+    return this.httpClient
+      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/individual/details`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        })
+      );
+  }
+
+
+  // Fetch OTT platforms
+  getOTTPlatformsMapping(): Observable<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]> {
+    console.log('Fetching OTT platforms mapping...');
+
+    return this.httpClient
+      .get<{ durationName: string; ottPlatformsNameMap: Record<string, string> }[]>(`${this.serverUnauthenticatedOttApi}/durationOttMappings/all`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        })
+      );
+  }
+
+  // New method to fetch OTT platform data
+  // getOTTPlatforms(): Observable<{ id: number; ott_platform: string }[]> {
+  //   return this.httpClient.get<{ id: number; ott_platform: string }[]>(`${this.apiUrl}/ott`);
+  // }
+
+  // getAllBusinessSubscriptions(): Observable<IndividualInterface[]> {
+  //   return this.httpClient.get<IndividualInterface[]>(`${this.apiUrl}/businessSubscriptions`);
+  // }
+
+  getAllBusinessSubscriptions(): Observable<IndividualInterface[]> {
+    console.log('Fetching business subscriptions...');
+
+    return this.httpClient
+      .get<IndividualInterface[]>(`${this.serverUnauthenticatedApiUrlBroadband}/business/details`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        })
+      );
+  }
 
   // getAllDTHChannels(): Observable<any[]> {
   //   return this.httpClient.get<any[]>(`${this.apiUrl}/dth`);
@@ -357,190 +284,126 @@ export class AdminService {
   getEnglishEntertainmentChannels(): Observable<Channel[]> {
     console.log('Fetching English entertainment channels...');
 
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/entertainment`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((channelsData: any[]) => {
-            // Extract only the "price" property and add an ID
-            return channelsData.map((channel) => ({
-              id: channel.channelId,  // Generate a simple ID based on the array index
-              name: channel.channelName,  // Include the channel name if needed
-              price: channel.price
-            }));
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+    return this.httpClient
+      .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/entertainment`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        }),
+        map((channelsData: any[]) => {
+          // Extract only the "price" property and add an ID
+          return channelsData.map((channel) => ({
+            id: channel.channelId,  // Generate a simple ID based on the array index
+            name: channel.channelName,  // Include the channel name if needed
+            price: channel.price
+          }));
+        })
+      );
   }
 
 
   getEnglishSportChannels(): Observable<Channel[]> {
     console.log('Fetching English sport channels...');
 
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/sport`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((channelsData: any[]) => {
-            // Extract only the "price" property and add an ID
-            return channelsData.map((channel) => ({
-              id: channel.channelId,  // Generate a simple ID based on the array index
-              name: channel.channelName,  // Include the channel name if needed
-              price: channel.price
-            }));
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+    return this.httpClient
+      .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/sport`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        }),
+        map((channelsData: any[]) => {
+          // Extract only the "price" property and add an ID
+          return channelsData.map((channel) => ({
+            id: channel.channelId,  // Generate a simple ID based on the array index
+            name: channel.channelName,  // Include the channel name if needed
+            price: channel.price
+          }));
+        })
+      );
   }
 
   getEnglishNewsChannels(): Observable<Channel[]> {
     console.log('Fetching English news channels...');
-
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-      console.log(headers);
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/news`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((channelsData: any[]) => {
-            // Extract only the "price" property and add an ID
-            return channelsData.map((channel) => ({
-              id: channel.channelId,  // Generate a simple ID based on the array index
-              name: channel.channelName,  // Include the channel name if needed
-              price: channel.price
-            }));
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+    return this.httpClient
+      .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/english/news`)
+      .pipe(
+        catchError((error: any) => {
+          console.error('API request failed:', error);
+          return throwError(error);
+        }),
+        map((channelsData: any[]) => {
+          // Extract only the "price" property and add an ID
+          return channelsData.map((channel) => ({
+            id: channel.channelId,  // Generate a simple ID based on the array index
+            name: channel.channelName,  // Include the channel name if needed
+            price: channel.price
+          }));
+        })
+      );
   }
 
   getHindiEntertainmentChannels(): Observable<Channel[]> {
-    console.log('Fetching Hindi entertainment channels...');
-
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/entertainment`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((channelsData: any[]) => {
-            // Extract only the "price" property and add an ID
-            return channelsData.map((channel) => ({
-              id: channel.channelId,  // Generate a simple ID based on the array index
-              name: channel.channelName,  // Include the channel name if needed
-              price: channel.price
-            }));
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+    
+    return this.httpClient
+    .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/entertainment`)
+    .pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      }),
+      map((channelsData: any[]) => {
+        // Extract only the "price" property and add an ID
+        return channelsData.map((channel) => ({
+          id: channel.channelId,  // Generate a simple ID based on the array index
+          name: channel.channelName,  // Include the channel name if needed
+          price: channel.price
+        }));
+      })
+    );
   }
 
 
   getHindiSportChannels(): Observable<Channel[]> {
     console.log('Fetching Hindi sport channels...');
-
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/sport`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((channelsData: any[]) => {
-            // Extract only the "price" property and add an ID
-            return channelsData.map((channel) => ({
-              id: channel.channelId,  // Generate a simple ID based on the array index
-              name: channel.channelName,  // Include the channel name if needed
-              price: channel.price
-            }));
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+    return this.httpClient
+    .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/sport`)
+    .pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      }),
+      map((channelsData: any[]) => {
+        // Extract only the "price" property and add an ID
+        return channelsData.map((channel) => ({
+          id: channel.channelId,  // Generate a simple ID based on the array index
+          name: channel.channelName,  // Include the channel name if needed
+          price: channel.price
+        }));
+      })
+    );
   }
 
   getHindiNewsChannels(): Observable<Channel[]> {
     console.log('Fetching Hindi news channels...');
 
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/news`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((channelsData: any[]) => {
-            // Extract only the "price" property and add an ID
-            return channelsData.map((channel) => ({
-              id: channel.channelId,  // Generate a simple ID based on the array index
-              name: channel.channelName,  // Include the channel name if needed
-              price: channel.price
-            }));
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+    return this.httpClient
+    .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/hindi/news`)
+    .pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      }),
+      map((channelsData: any[]) => {
+        // Extract only the "price" property and add an ID
+        return channelsData.map((channel) => ({
+          id: channel.channelId,  // Generate a simple ID based on the array index
+          name: channel.channelName,  // Include the channel name if needed
+          price: channel.price
+        }));
+      })
+    );
   }
 
 
@@ -548,14 +411,8 @@ export class AdminService {
   getTamilEntertainmentChannels(): Observable<Channel[]> {
     console.log('Fetching Tamil entertainment channels...');
 
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/entertainment`, { headers: headers })
+    return this.httpClient
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/entertainment`)
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -570,55 +427,36 @@ export class AdminService {
             }));
           })
         );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
   }
 
 
   getTamilSportChannels(): Observable<Channel[]> {
     console.log('Fetching Tamil sport channels...');
 
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/sport`, { headers: headers })
-        .pipe(
-          catchError((error: any) => {
-            console.error('API request failed:', error);
-            return throwError(error);
-          }),
-          map((channelsData: any[]) => {
-            // Extract only the "price" property and add an ID
-            return channelsData.map((channel) => ({
-              id: channel.channelId,  // Generate a simple ID based on the array index
-              name: channel.channelName,  // Include the channel name if needed
-              price: channel.price
-            }));
-          })
-        );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
+    
+    return this.httpClient
+    .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/sport`)
+    .pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      }),
+      map((channelsData: any[]) => {
+        // Extract only the "price" property and add an ID
+        return channelsData.map((channel) => ({
+          id: channel.channelId,  // Generate a simple ID based on the array index
+          name: channel.channelName,  // Include the channel name if needed
+          price: channel.price
+        }));
+      })
+    );
   }
 
   getTamilNewsChannels(): Observable<Channel[]> {
     console.log('Fetching Tamil news channels...');
 
-    if (this.jwtToken) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${this.jwtToken}`,
-        'Content-Type': 'application/json',
-      });
-
-      return this.httpClient
-        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/news`, { headers: headers })
+    return this.httpClient
+        .get<any[]>(`${this.serverUnauthenticatedApiUrlBroadband}/channels/tamil/news`)
         .pipe(
           catchError((error: any) => {
             console.error('API request failed:', error);
@@ -633,10 +471,120 @@ export class AdminService {
             }));
           })
         );
-    } else {
-      console.error('JWT token not found in session storage');
-      return throwError('JWT token not found');
-    }
   }
 
+  createCustomerServiceLinkIndividual(customerId: number, individualId: number, durationDays: number): Observable<any> {
+    const customerStatus = true;
+
+    const requestBody = {
+      customerId,
+      individualId,
+      durationDays,
+      customerStatus
+    };
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.jwtToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.httpClient.post(`${this.serverApiUrl}/individual/create`, requestBody, { headers }).pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      })
+    );
+  }
+
+  createCustomerServiceLinkBusiness(customerId: number, businessId: number, durationDays: number): Observable<any> {
+    const customerStatus = true;
+
+    const requestBody = {
+      customerId,
+      businessId,
+      durationDays,
+      customerStatus
+    };
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.jwtToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.httpClient.post(`${this.serverApiUrl}/business/create`, requestBody, { headers }).pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      })
+    );
+  }
+
+  createCustomerServiceLinkEnglish(customerId: number, englishId: number): Observable<any> {
+    const customerStatus = true;
+    const durationDays = 28;
+    const requestBody = {
+      customerId,
+      englishId,
+      durationDays,
+      customerStatus
+    };
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.jwtToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.httpClient.post(`${this.serverApiUrl}/english/create`, requestBody, { headers }).pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      })
+    );
+  }
+
+  createCustomerServiceLinkHindi(customerId: number, hindiId: number): Observable<any> {
+    const customerStatus = true;
+    const durationDays = 28;
+    const requestBody = {
+      customerId,
+      hindiId,
+      durationDays,
+      customerStatus
+    };
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.jwtToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.httpClient.post(`${this.serverApiUrl}/hindi/create`, requestBody, { headers }).pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      })
+    );
+  }
+
+  createCustomerServiceLinkTamil(customerId: number, tamilId: number): Observable<any> {
+    const customerStatus = true;
+    const durationDays = 28;
+    const requestBody = {
+      customerId,
+      tamilId,
+      durationDays,
+      customerStatus
+    };
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.jwtToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.httpClient.post(`${this.serverApiUrl}/tamil/create`, requestBody, { headers }).pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      })
+    );
+  }
 }

@@ -62,10 +62,20 @@ import { TamilEntertainmentComponent } from './components/landing/viewdetailed-d
 import { TamilSportsComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-sports/tamil-sports.component';
 import { TamilNewsComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-news/tamil-news.component';
 
-import { EntertainmentComponent } from './components/landing/viewdetailed-dthplans/english/entertainment/entertainment.component';
-import { SportsComponent } from './components/landing/viewdetailed-dthplans/english/sports/sports.component';
-import { NewsComponent } from './components/landing/viewdetailed-dthplans/english/news/news.component';
+// import { EntertainmentComponent } from './components/landing/viewdetailed-dthplans/english/entertainment/entertainment.component';
+// import { SportsComponent } from './components/landing/viewdetailed-dthplans/english/sports/sports.component';
+// import { NewsComponent } from './components/landing/viewdetailed-dthplans/english/news/news.component';
 import { MatListModule } from '@angular/material/list';
+import { PaymentDialougeComponent } from './components/landing/viewdetailedbroadband/individualplan/payment-dialouge/payment-dialouge.component';
+import { HandelAuthenticationDialougeComponent } from './components/landing/viewdetailedbroadband/individualplan/handel-authentication-dialouge/handel-authentication-dialouge.component';
+import { BusinessPaymentDialogComponent } from './components/landing/viewdetailedbroadband/businessplan/business-payment-dialog/business-payment-dialog.component';
+import { HandelBusinessAuthenticationDialogeComponent } from './components/landing/viewdetailedbroadband/businessplan/handel-business-authentication-dialoge/handel-business-authentication-dialoge.component';
+import { EnglishPaymentDialogeComponent } from './components/landing/viewdetailed-dthplans/english-plan/english-payment-dialoge/english-payment-dialoge.component';
+import { HandelEnglishAuthenticationDialogeComponent } from './components/landing/viewdetailed-dthplans/english-plan/handel-english-authentication-dialoge/handel-english-authentication-dialoge.component';
+import { HindiPaymentDialogeComponent } from './components/landing/viewdetailed-dthplans/hindi-plan/hindi-payment-dialoge/hindi-payment-dialoge.component';
+import { HandelHindiAuthenticationDialogeComponent } from './components/landing/viewdetailed-dthplans/hindi-plan/handel-hindi-authentication-dialoge/handel-hindi-authentication-dialoge.component';
+import { TamilPaymentDialogeComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-payment-dialoge/tamil-payment-dialoge.component';
+import { HandelTamilAuthenticationDialogeComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/handel-tamil-authentication-dialoge/handel-tamil-authentication-dialoge.component';
 
 
 
@@ -109,6 +119,16 @@ import { MatListModule } from '@angular/material/list';
     TamilEntertainmentComponent,
     TamilSportsComponent,
     TamilNewsComponent,
+    PaymentDialougeComponent,
+    HandelAuthenticationDialougeComponent,
+    BusinessPaymentDialogComponent,
+    HandelBusinessAuthenticationDialogeComponent,
+    EnglishPaymentDialogeComponent,
+    HandelEnglishAuthenticationDialogeComponent,
+    HindiPaymentDialogeComponent,
+    HandelHindiAuthenticationDialogeComponent,
+    TamilPaymentDialogeComponent,
+    HandelTamilAuthenticationDialogeComponent,
 
   ],
   imports: [

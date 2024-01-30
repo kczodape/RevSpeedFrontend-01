@@ -1,0 +1,29 @@
+div {
+    width: 500px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        font-size: 25px;
+        border-bottom: 3px solid orange;
+        padding-bottom: 15px;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        outline: none;
+
+        button {
+            width: 40%;
+            outline: none;
+        }
+    }
+}

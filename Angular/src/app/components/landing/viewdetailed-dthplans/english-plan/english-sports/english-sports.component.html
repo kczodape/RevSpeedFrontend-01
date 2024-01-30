@@ -24,7 +24,7 @@
             mat-raised-button
             id="btn1"
             class="plan-tab-view-more-btn"
-            routerLink="/viewmoreplan"
+            (click)="openDialog(element.id)"
           >
             Rs.{{ element.price }}/-
            </button>  </td>
