@@ -37,12 +37,12 @@ export class LoginComponent {
     this.service.login(this.loginForm.value).subscribe((response) => {
       console.log(response);
       if (response.jwt != null) {
-        alert('Hello, Your token is ' + response.jwt);
+        // alert('Hello, Your token is ' + response.jwt);
         const jwtToken = response.jwt;
         sessionStorage.setItem('jwt', jwtToken);
         this.authenticatedUsersDetails().subscribe(
           (role: String) => {
-            alert('role: ' + role);
+            // alert('role: ' + role);
 
             if (role == 'ADMIN') {
               this.router.navigateByUrl('/admin');

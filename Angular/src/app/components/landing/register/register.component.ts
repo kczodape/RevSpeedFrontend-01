@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],
         confirmPassword: ['', [Validators.required]],
-        phoneNumber: [''],
+        phoneNumber: ['', [Validators.pattern(/^\d{10}$/)]],
         address: [''],
       },
       { validator: this.passwordMathValidator }

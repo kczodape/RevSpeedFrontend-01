@@ -490,7 +490,7 @@ export class AdminService {
 
     return this.httpClient.post(`${this.serverApiUrl}/individual/create`, requestBody, { headers }).pipe(
       catchError((error: any) => {
-        console.error('API request failed:', error);
+        console.error('API request failed www:', error);
         return throwError(error);
       })
     );

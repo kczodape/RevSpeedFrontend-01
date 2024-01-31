@@ -10,7 +10,7 @@ export class TotalreveneucardComponent implements OnInit {
   
   totalRevenue: number | any;
 
-  exchangeRate = 0.012;
+  // exchangeRate = 0.012;
 
   constructor(private adminService: AdminService) { }
 
@@ -29,7 +29,5 @@ export class TotalreveneucardComponent implements OnInit {
     );
   }
 
-  calculateUSD(): number {
-    return this.totalRevenue * this.exchangeRate;
-  }
+
 }

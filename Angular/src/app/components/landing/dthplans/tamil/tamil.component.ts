@@ -10,7 +10,7 @@ export class TamilComponent {
   cards = [
     { title: 'Tamil Entertainment', 
     No_Of_Channels: '10', 
-    rentalSubtitle: 'Rs 1000',
+    rentalSubtitle: 'Rs 37',
     image:"istockphoto-1.jpg", 
     Channels:{c1:'Sun TV',
               c2:' Vijay TV',
@@ -19,7 +19,7 @@ export class TamilComponent {
   },
     { title: 'Tamil News',
      No_Of_Channels: '5',
-      rentalSubtitle: 'Rs 1000', 
+      rentalSubtitle: 'Rs 23', 
       image:"istockphoto.jpg",
       Channels:{
               c1:'Sun News',
@@ -29,7 +29,7 @@ export class TamilComponent {
     } },
     { title: 'Tamil Sports', 
     No_Of_Channels: '4', 
-    rentalSubtitle: 'Rs 1000', 
+    rentalSubtitle: 'Rs 19', 
     image:"istockphoto-13.jpg",
     Channels:{
               c1:'Star Sports Tamil',

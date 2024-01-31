@@ -46,6 +46,7 @@ import { TamilsportsComponent } from './dth/tamil/tamilsports/tamilsports.compon
 import { TamilnewsComponent } from './dth/tamil/tamilnews/tamilnews.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
+import { RemoveTrailingZerosPipe } from './dashboard/totalreveneucard/remove-trailing-zeros.pipe';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { MatMenuModule } from '@angular/material/menu';
     TamilentertainmentComponent,
     TamilsportsComponent,
     TamilnewsComponent,
+    RemoveTrailingZerosPipe,
   ],
   imports: [
     CommonModule,
