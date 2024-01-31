@@ -9,7 +9,7 @@ export class EnglishComponent {
   cards = [
     { title: 'English Entertainment', 
     No_Of_Channels: '10', 
-    rentalSubtitle: 'Rs 1000',
+    rentalSubtitle: 'Rs 46',
     image:"istockphoto-1.jpg", 
     Channels:{c1:'ABC (American Broadcasting Company)',
               c2:'CBS (Columbia Broadcasting System)',
@@ -25,7 +25,7 @@ export class EnglishComponent {
   },
     { title: 'English News',
      No_Of_Channels: '5',
-      rentalSubtitle: 'Rs 1000', 
+      rentalSubtitle: 'Rs 20', 
       image:"istockphoto.jpg",
       Channels:{
               c1:'CNN (Cable News Network)',
@@ -36,7 +36,7 @@ export class EnglishComponent {
     } },
     { title: 'English Sports', 
     No_Of_Channels: '4', 
-    rentalSubtitle: 'Rs 1000', 
+    rentalSubtitle: 'Rs 22', 
     image:"istockphoto-13.jpg",
     Channels:{
               c1:'Fox Sports',

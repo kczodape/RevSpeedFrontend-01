@@ -89,6 +89,8 @@ export class IndividualplanComponent implements AfterViewInit {
   myDetails() {
     this.jwtService.myDetails().subscribe(
       (response) => {
+        console.log(response);
+        
         const customerId = response.id;
         sessionStorage.setItem('customerId', customerId.toString());
         const customerIdFromSession = sessionStorage.getItem('customerId')
