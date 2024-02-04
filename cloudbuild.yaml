@@ -1,9 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/npm'
-    args: [ 'install', '--omit=dev' ]
+    args: [ 'install', '-g', '@angular/cli' ]
 
   - name: 'gcr.io/cloud-builders/npm'
-    args: [ 'run', 'build', '--prod' ]
+    args: [ 'install', '-g', '@angular/cli' ]
+
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [ 'run', 'build' ]
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [ 'app', 'deploy', '--version=prod' ]
