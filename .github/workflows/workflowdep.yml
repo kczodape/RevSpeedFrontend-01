@@ -44,7 +44,7 @@ jobs:
       - id: get-kubeconfig
         uses: google-github-actions/get-gke-credentials@main
         with:
-          project_id: ${{ secrets.GET_GKE_CRED_PROJECT }}
+          project_id: ${{ secrets.GCLOUD_PROJECT }}
           cluster_name: ${{ secrets.GET_GKE_CRED_CLUSTER_NAME }}
           location: ${{ secrets.GET_GKE_CRED_CLUSTER_LOCATION }}
           use_auth_provider: true
@@ -76,6 +76,6 @@ jobs:
       - name: Build image  
         working-directory: ./angular-gke/dist
         run: |-
-          gcloud config set project ${{ secrets.GET_GKE_CRED_PROJECT }}
-          gcloud builds submit -t gcr.io/${{ secrets.GET_GKE_CRED_PROJECT }}/angular-gke-sample .
+          gcloud config set project ${{ secrets.GCLOUD_PROJECT }}
+          gcloud builds submit -t gcr.io/${{ secrets.GCLOUD_PROJECT }}/angular-gke-sample .
           kubectl rollout restart deployment/angular-gke-sample
