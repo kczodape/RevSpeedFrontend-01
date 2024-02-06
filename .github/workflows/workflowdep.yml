@@ -32,7 +32,7 @@ jobs:
           npm install
 
       - name: Build Angular App
-        run: npm run build --prod
+        run: npm run build
 
       - name: Setup Google Cloud CLI
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@v0.2.1
