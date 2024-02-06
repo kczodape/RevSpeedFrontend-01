@@ -16,10 +16,12 @@ spec:
     spec:
       containers:
         - name: angular-gke-sample
-          image: gcr.io/revdep/angular-gke-sample
+          image: gcr.io/revdep/angular-gke-sample:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+      imagePullSecrets:
+        - name: my-image-pull-secret
 ---
 apiVersion: v1
 kind: Service
