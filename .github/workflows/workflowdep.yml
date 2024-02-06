@@ -11,6 +11,7 @@ env:
   GKE_ZONE: us-central1
   IMAGE: angular-gke-sample
   TAG: 0.0.1
+  DEPLOYMENT_NAME: angular-gke-sample
 
 jobs:
   build-and-deploy:
@@ -59,3 +60,5 @@ jobs:
       - name: Apply Kubernetes Deployment
         run: |
           kubectl apply -f deployment.yaml
+          kubectl rollout status deployment/$DEPLOYMENT_NAME
+          kubectl get services -o wide
