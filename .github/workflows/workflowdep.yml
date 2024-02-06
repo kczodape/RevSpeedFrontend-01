@@ -6,9 +6,9 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.GET_GKE_CRED_PROJECT }}
-  GKE_CLUSTER: angular-gke-sample
-  GKE_ZONE: us-central1
+  PROJECT_ID: ${{ secrets.GCLOUD_PROJECT }}
+  GKE_CLUSTER: ${{ secrets.GET_GKE_CRED_CLUSTER_NAME }}
+  GKE_ZONE: u${{ secrets.GET_GKE_CRED_CLUSTER_LOCATION }}
   IMAGE: angular-gke-sample
   TAG: 0.0.1
 
@@ -46,7 +46,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }} .
+          docker build --tag gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }} .
 
       - name: Push Docker Image to GCR
         run: |
