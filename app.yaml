@@ -1,0 +1,23 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+  # Serve the pre-rendered HTML files for server requests
+  - url: /
+    static_files: dist/revspeed-app/browser/index.html
+    upload: dist/revspeed-app/browser/index.html
+
+  # Serve dynamic requests to the server folder
+  - url: /.*
+    static_dir: dist/revspeed-app/browser
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json  
+  - ^(.*/)?.*\.md$  
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE
