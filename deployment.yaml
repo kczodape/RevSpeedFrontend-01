@@ -33,6 +33,7 @@ spec:
   ports:
     - port: 80
       protocol: TCP
-      targetPort: 80
+      targetPort: 4200
   selector:
     app: angular-gke-sample
+  type: LoadBalancer
