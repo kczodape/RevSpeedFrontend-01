@@ -55,7 +55,9 @@ jobs:
 
       - name: Set Google Cloud Project ID and Get GKE Credentials
         run: gcloud config set project $PROJECT_ID && gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
-        
+    
+      - name: Install gke-gcloud-auth-plugin
+        run: gcloud components install kubectl
 
       - name: Apply Kubernetes Deployment
         run: |
