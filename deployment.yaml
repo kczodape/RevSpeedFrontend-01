@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: angular-gke-sample
-          image: gcr.io/revdep/angular-gke-sample
+          image: gcr.io/revdep/angular-gke-sample:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 80
