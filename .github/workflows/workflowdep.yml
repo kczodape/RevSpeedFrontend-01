@@ -36,7 +36,7 @@ jobs:
           project_id: ${{ secrets.GET_GKE_CRED_PROJECT }}
           cluster_name: ${{ secrets.GET_GKE_CRED_CLUSTER_NAME }}
           location: ${{ secrets.GET_GKE_CRED_CLUSTER_LOCATION }}
-          use_auth_provider: true
+          use_auth_provider: false
 
       - uses: actions/setup-node@v1
         with:
