@@ -33,9 +33,9 @@ jobs:
       - id: get-kubeconfig
         uses: ./.github/get-gke-credentials
         with:
-          project_id: ${{ secrets.GET_GKE_CRED_PROJECT }}
-          cluster_name: ${{ secrets.GET_GKE_CRED_CLUSTER_NAME }}
-          location: ${{ secrets.GET_GKE_CRED_CLUSTER_LOCATION }}
+          project_id: "revdep"
+          cluster_name: "angular-gke-sample"
+          location: "us-central1"
           use_auth_provider: false
 
       - uses: actions/setup-node@v1
