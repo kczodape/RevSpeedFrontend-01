@@ -32,7 +32,7 @@ jobs:
 
       
       - id: get-kubeconfig
-        uses: ./.github/get-gke-credentials
+        uses: google-github-actions/get-gke-credentials@main
         with:
           project_id: ${{ secrets.GET_GKE_CRED_PROJECT }}
           cluster_name: ${{ secrets.GET_GKE_CRED_CLUSTER_NAME }}
