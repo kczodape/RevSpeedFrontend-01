@@ -10,7 +10,7 @@ env:
   GKE_CLUSTER: angular-gke-sample
   GKE_ZONE: us-central1
   IMAGE: angular-gke-sample
-  TAG: latest
+  TAG: 0.0.1
 
 jobs:
   build-and-deploy:
