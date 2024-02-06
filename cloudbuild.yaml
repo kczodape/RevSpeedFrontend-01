@@ -10,9 +10,3 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [ 'app', 'deploy', '--version=prod' ]
-
-    
-options:
-  machineType: 'E2'  # Adjust machine type if needed
-  env:
-    - 'NODE_VERSION=16'  # Set Node.js version explicitly during the build
