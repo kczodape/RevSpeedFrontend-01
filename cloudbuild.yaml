@@ -10,3 +10,8 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [ 'app', 'deploy', '--version=prod' ]
+
+options:
+  machineType: 'E2',
+  env: 
+    - `NODE_VERSION=16`
