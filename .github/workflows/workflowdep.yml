@@ -52,8 +52,8 @@ jobs:
         run: |
           docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE }}:${{ env.TAG }}
 
-      - name: Get GKE Credentials
-        run: gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+      - name: Set Google Cloud Project ID and Get GKE Credentials
+        run: gcloud config set project $PROJECT_ID && gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
         
 
       - name: Apply Kubernetes Deployment
