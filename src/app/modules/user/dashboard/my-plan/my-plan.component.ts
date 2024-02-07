@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../../services/admin.service';
 import { JwtService } from '../../../../services/jwt.service';
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-plan',
@@ -10,8 +12,9 @@ import { JwtService } from '../../../../services/jwt.service';
 export class MyPlanComponent implements OnInit {
 
   customerHistory: any[] = [];
+  isSmallScreen: boolean = false;
 
-  constructor(private adminService: AdminService, private jwtService: JwtService) { }
+  constructor(private adminService: AdminService, private jwtService: JwtService, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchCustomerHistory();
@@ -44,5 +47,10 @@ export class MyPlanComponent implements OnInit {
         console.log("customerIdaaa ", customerIdFromSession);
       }
     )
+  }
+
+  logout() {
+    this.auth.logOut();
+    this.router.navigate(['/login']);
   }
 }
