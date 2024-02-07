@@ -6,5 +6,4 @@ COPY . .
 RUN npm run prod
 
 FROM nginx:1.19
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist/revspeed-app/browser/ /usr/share/nginx/html
