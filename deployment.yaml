@@ -19,7 +19,7 @@ spec:
           image: gcr.io/revdep/angular-gke-sample:0.0.1
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 4200
       imagePullSecrets:
         - name: my-image-pull-secret
 ---
