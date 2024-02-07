@@ -28,24 +28,11 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.fetchUserDetails();
-    this.createForms();
-    this.getUsers();
   }
 
-  openDialog() {
-    const dialogRef = this._dialog.open(FormComponent);
-    dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        if (val) {
-          this.fetchUserDetails();
-        }
-      },
-    });
-  }
-
-  openEditForm(data: any) {
+  openEditForm() {
     const dialogRef = this._dialog.open(FormComponent, {
-      data: data,
+      data: this.userDetails,
     });
     dialogRef.afterClosed().subscribe({
       next: (val) => {
@@ -54,62 +41,11 @@ export class UserProfileComponent implements OnInit {
         }
       },
     });
-  }
-
-  createForms(): void {
-    this.userForm = this.fb.group({
-      id: [null],
-      name: ['', Validators.required],
-      phone_number: [null, Validators.required],
-      address: [''],
-      email_id: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      is_broadband: [false],
-      is_dth: [false],
-      role: ['', Validators.required],
-    });
-
-    this.newUserForm = this.fb.group({
-      name: ['', Validators.required],
-      phone_number: [null, Validators.required],
-      address: [''],
-      email_id: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      is_broadband: [false],
-      is_dth: [false],
-      role: ['', Validators.required],
-    });
-  }
-
-  getUsers(): void {
-    this.userService.getUsers().subscribe((data) => {
-      this.users = data;
-    });
-  }
-
-  addUser(): void {
-    if (this.newUserForm.valid) {
-      const newUser: User = this.newUserForm.value;
-      this.userService.addUser(newUser).subscribe(() => {
-        this.getUsers();
-        this.newUserForm.reset();
-      });
-    }
-  }
-
-  updateUser(): void {
-    if (this.userForm.valid) {
-      const updatedUser: User = this.userForm.value;
-      this.userService.updateUser(updatedUser).subscribe(() => {
-        this.getUsers();
-        this.userForm.reset();
-      });
-    }
   }
 
   deleteUser(id: number): void {
     this.userService.deleteUser(id).subscribe(() => {
-      this.getUsers();
+      this.fetchUserDetails();
     });
   }
 

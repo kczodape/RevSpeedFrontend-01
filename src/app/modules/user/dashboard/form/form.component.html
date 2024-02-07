@@ -1,59 +1,62 @@
 <style>
-    .content {
-      padding: 20px;
-    }
-  
-    .contentHeader {
-      padding: 20px 20px 0px 20px;
-    }
-  
-    .action {
-      padding: 0px 25px 20px;
-      display: flex;
-      gap: 10px;
-    }
-    button {
-      flex: 1;
-    }
-  </style>
-  
-  <div mat-dialog-title class="contentHeader">
-    <h1>Update User</h1>
+  .content {
+    padding: 20px;
+  }
+
+  .contentHeader {
+    padding: 20px 20px 0px 20px;
+  }
+
+  .action {
+    padding: 0px 25px 20px;
+    display: flex;
+    gap: 10px;
+  }
+  button {
+    flex: 1;
+  }
+</style>
+
+<div mat-dialog-title class="contentHeader">
+  <h1>Update User</h1>
+</div>
+<form [formGroup]="userForm" action="" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Ex. John"
+          formControlName="name"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Ex. 26578413"
+          formControlName="phoneNumber"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Ex. No 123 , abc."
+          formControlName="address"
+          required
+        />
+      </mat-form-field>
+    </div>
   </div>
-  <form [formGroup]="userForm" action="" (ngSubmit)="onFormSubmit()">
-    <div mat-dialog-content class="content">
-      <div class="row">
-        <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
-          <input
-            matInput
-            type="text"
-            placeholder="Ex. John"
-            formControlName="name"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Phone Number</mat-label>
-          <input
-            matInput
-            type="number"
-            placeholder="Ex. 26578413"
-            formControlName="phoneNumber"
-          />
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <input
-            matInput
-            type="text"
-            placeholder="Ex. No 123 , abc."
-            formControlName="address"
-          />
-        </mat-form-field>
-      </div>
-    </div>
-    <div mat-dialog-actions class="action">
-      <button mat-raised-button>Cancel</button>
-      <button mat-raised-button color="primary" type="submit">Save</button>
-    </div>
-  </form>
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button>Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </div>
+</form>
