@@ -1,9 +1,2 @@
-FROM node:16.4.0 as build
-WORKDIR /app
-COPY package.json ./
-RUN npm install
-COPY . .
-RUN npm prod
-
-FROM nginx:1.19
-COPY --from=build /app/dist/revspeed-app/browser/ /usr/share/nginx/html
+FROM nginx:alpine
+COPY /dist/revspeed-app /user/share/nginx/html
