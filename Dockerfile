@@ -1,6 +1,2 @@
-FROM node
-WORKDIR ./
-COPY package.json package-lock.json ./
-RUN npm install
-COPY . .
-RUN npm build
+FROM nginx:latest
+COPY dist/revspeed-app/browser /usr/share/nginx/html
