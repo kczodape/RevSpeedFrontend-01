@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . .
-RUN npm run prod
+RUN npm prod
 
 FROM nginx:1.19
 COPY --from=build /app/dist/revspeed-app/browser/ /usr/share/nginx/html
