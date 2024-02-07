@@ -22,7 +22,7 @@ import { MatTableModule } from '@angular/material/table';
     DashboardComponent,
     UserProfileComponent,
     FormComponent,
-    MyPlanComponent
+    MyPlanComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,40 @@
-<!-- my-plan.component.html -->
-
+<style>
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+  
+    button {
+      background-color: #f05e23;
+      color: #fff;
+      /* padding: 8px; */
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+  
+    .example-spacer {
+      flex: 1 1 auto;
+    }
+  </style>
+  
+  <p>
+    <mat-toolbar>
+      <p routerLink="/">RevSpeed</p>
+  
+      <span class="example-spacer"></span>
+      <a mat-button *ngIf="!isSmallScreen" routerLink="/">Home</a>
+      <a mat-button *ngIf="!isSmallScreen" routerLink="/viewmoreplan">BroadBand Service</a>
+      <a mat-button *ngIf="!isSmallScreen" routerLink="/viewdetailedplan">DTH Service</a>
+      <a mat-button *ngIf="!isSmallScreen" routerLink="/aboutus">About Us</a>
+      <a mat-button *ngIf="!isSmallScreen" routerLink="/contact">Contact us</a>
+      <button (click)="logout()">Logout</button>
+      <button routerLink="history">History</button>
+      <!-- <button (click)="hello()">get</button>
+        <button (click)="myDetails()">My details</button> -->
+    </mat-toolbar>
+  </p>
 <h2>Customer History</h2>
 
 <div class="table">
@@ -14,7 +49,7 @@
         <!-- Price Column -->
         <ng-container matColumnDef="servicePrice">
             <th mat-header-cell *matHeaderCellDef> Price </th>
-            <td mat-cell *matCellDef="let item"> ${{ item.servicePrice }} </td>
+            <td mat-cell *matCellDef="let item"> ₹{{ item.servicePrice }} </td>
         </ng-container>
 
         <!-- Row with columns -->

@@ -1,6 +1,2 @@
-FROM nginx
-
+FROM nginx:alpine
 COPY /dist/revspeed-app/browser /user/share/nginx/html
-
-
-COPY . /usr/share/nginx/html
