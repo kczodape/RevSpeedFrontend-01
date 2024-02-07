@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { error } from 'console';
 import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 
-const BASE_URL = ['http://localhost:9898/'];
+// const BASE_URL = ['http://localhost:9898/'];
+
+const BASE_URL = ['http://34.70.138.168/'];
 
 @Injectable({
   providedIn: 'root',
