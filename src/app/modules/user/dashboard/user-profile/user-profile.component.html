@@ -1,39 +1,115 @@
+<style>
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+  .example-card {
+    width: 400px;
+    border-radius: 30px;
+    margin-top: 30px;
+  }
 
-  <div class="profile-container">
-        <div class="outer-box">
-          <div class="left-section">
-            <!-- Left content goes here (80%) -->
-            <img src="../../../../../assets/profile.svg" alt="profile-images" class="profile-images">
+  mat-divider {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 
-          </div>
-          <div class="right-section">
-            <!-- Right content goes here (20%) -->
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .example-header-image {
+    margin-top: 10px;
+    background-image: url("https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg");
+    background-size: cover;
+  }
 
-            <div class="userImage">
-              <img src="../../../../../assets/PROFILE PIC ICON.jpg" class="image"><br>
-            </div>
-            <div>
-              <button class="btn-Property">Update picture</button>
-              <button class="btn-Property">Delete picture</button>
-            </div>
-            <div>
-              <form>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-        
-                <label for="email">Email ID:</label>
-                <input type="email" id="email" name="email" required>
-        
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
-        
-                <label for="address">Address:</label>
-                <input type="text" id="=address" name="address" required>
-        
-                <button type="submit" id="submit">Submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
+  .content {
+    margin: 15px;
+  }
+
+  .header-btn {
+    background-color: #f05e23;
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 18px;
+  }
+</style>
+
+<div class="profile-container">
+  <div class="outer-box">
+    <div class="left-section">
+      <!-- Left content goes here (80%) -->
+      <img
+        src="../../../../../assets/profile.svg"
+        alt="profile-images"
+        class="profile-images"
+      />
+    </div>
+    <div class="right-section">
+      <!-- Right content goes here (20%) -->
+
+      <!-- <div class="userImage">
+        <img
+          src="../../../../../assets/PROFILE PIC ICON.jpg"
+          class="image"
+        /><br />
       </div>
+      <div class="buttons">
+        <button class="btn-Property">Update picture</button>
+        <button class="btn-Property">Delete picture</button>
+      </div> -->
+      <!-- <div>
+        <form>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
 
+          <label for="email">Email ID:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required />
+
+          <label for="address">Address:</label>
+          <input type="text" id="=address" name="address" required />
+
+          <button type="submit" id="submit">Submit</button>
+        </form>
+      </div> -->
+
+      <mat-card class="example-card" *ngIf="userDetails">
+        <mat-card-header class="header">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>User Info</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+          <button class="header-btn" (click)="openDialog()">Update</button>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <div class="content">
+          <mat-card-subtitle>Name</mat-card-subtitle>
+          <mat-card-title>{{ userDetails.name }}</mat-card-title>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="content">
+          <mat-card-subtitle>Email</mat-card-subtitle>
+          <mat-card-title>{{ userDetails.email }}</mat-card-title>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="content">
+          <mat-card-subtitle>Address</mat-card-subtitle>
+          <mat-card-title>{{ userDetails.address }}</mat-card-title>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="content">
+          <mat-card-subtitle>Phone Number</mat-card-subtitle>
+          <mat-card-title>{{ userDetails.phoneNumber }}</mat-card-title>
+        </div>
+        <mat-divider></mat-divider>
+      </mat-card>
+    </div>
+  </div>
+</div>

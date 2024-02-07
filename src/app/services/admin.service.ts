@@ -587,4 +587,26 @@ export class AdminService {
       })
     );
   }
+
+  updateCustomerStatusBySubscriptionEndDate(cid: number): Observable<string> {
+    const url = `${this.serverApiUrl}/validity/${cid}`;
+    const headers = this.jwtToken ? new HttpHeaders({
+      'Authorization': `Bearer ${this.jwtToken}`
+    }) : undefined;
+ 
+    return this.httpClient.put<string>(url, {}, { headers });
+  }
+  getCustomerHistory(customerId: number): Observable<any[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.jwtToken}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.httpClient.get<any[]>(`${this.serverApiUrl}/history/${customerId}`, { headers }).pipe(
+      catchError((error: any) => {
+        console.error('API request failed:', error);
+        return throwError(error);
+      })
+    );
+  }
 }

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JwtService } from '../../../services/jwt.service';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { error } from 'console';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,13 @@ import { error } from 'console';
 export class LoginComponent {
   loginForm: FormGroup | any;
   hidePassword: boolean = true;
+  customerIdFromSession:any = sessionStorage.getItem('customerId')
 
   constructor(
     private service: JwtService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private adminService: AdminService
   ) {}
 
   togglePasswordVisibility(): void {
@@ -31,6 +34,7 @@ export class LoginComponent {
       password: ['', Validators.required],
     });
     // this.authenticatedUsersDetails();
+    this.updateCustomerStatus(this.customerIdFromSession)
   }
 
   submitForm() {
@@ -75,5 +79,18 @@ export class LoginComponent {
     );
   }
 
-  
+  updateCustomerStatus(cid: number) {
+    this.adminService.updateCustomerStatusBySubscriptionEndDate(cid)
+      .subscribe(
+        response => {
+          console.log('Customer status updated successfully');
+          // Perform any other actions upon successful update
+        },
+        error => {
+          console.error('Error updating customer status:', error);
+          // Handle error cases appropriately
+        }
+      );
+  }
+
 }

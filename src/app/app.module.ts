@@ -40,7 +40,7 @@ import { IndividualplanComponent } from './components/landing/viewdetailedbroadb
 import { BusinessplanComponent } from './components/landing/viewdetailedbroadband/businessplan/businessplan.component';
 import { ForgotComponent } from './components/landing/forgot/forgot.component';
 import { OtpdialogComponent } from './components/landing/forgot/otpdialog/otpdialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { ResetComponent } from './components/landing/forgot/otpdialog/reset/reset.component';
 import { ContactComponent } from './components/landing/contact/contact.component';
 import { DthplansComponent } from './components/landing/dthplans/dthplans.component';
@@ -76,7 +76,9 @@ import { HindiPaymentDialogeComponent } from './components/landing/viewdetailed-
 import { HandelHindiAuthenticationDialogeComponent } from './components/landing/viewdetailed-dthplans/hindi-plan/handel-hindi-authentication-dialoge/handel-hindi-authentication-dialoge.component';
 import { TamilPaymentDialogeComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/tamil-payment-dialoge/tamil-payment-dialoge.component';
 import { HandelTamilAuthenticationDialogeComponent } from './components/landing/viewdetailed-dthplans/tamil-plan/handel-tamil-authentication-dialoge/handel-tamil-authentication-dialoge.component';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDividerModule } from '@angular/material/divider';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -132,6 +134,7 @@ import { HandelTamilAuthenticationDialogeComponent } from './components/landing/
 
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -154,6 +157,20 @@ import { HandelTamilAuthenticationDialogeComponent } from './components/landing/
     NgbCarouselModule,
     HttpClientModule,
     MatListModule,
+    MatSlideToggleModule,
+    MatDividerModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    MatButtonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => sessionStorage.getItem('jwt'),
