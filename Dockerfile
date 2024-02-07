@@ -1,2 +1,2 @@
 FROM nginx:alpine
-COPY dist/revspeed-app/browser /user/share/nginx/html
+COPY --from=build dist/revspeed-app/browser /user/share/nginx/html
