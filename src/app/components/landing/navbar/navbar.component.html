@@ -11,6 +11,9 @@
   <a mat-button *ngIf="!isSmallScreen" routerLink="/viewdetailedplan">DTH Service</a>
   <a mat-button *ngIf="!isSmallScreen" routerLink="/aboutus">About Us</a>
   <a mat-button *ngIf="!isSmallScreen" routerLink="/contact">Contact us</a>
+  <mat-slide-toggle (change)="toggleTheme()" class="toggle-theme-button">
+    .
+  </mat-slide-toggle>
 
   <mat-menu #profileMenu="matMenu">
     <button mat-menu-item routerLink="/user"><i class="fa-solid fa-user" routerLink="/profile"></i> Profile</button>

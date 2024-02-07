@@ -1,3 +1,26 @@
 body{
     background-color: #fbfbfb;
 }
+ 
+.container {
+    position: relative; /* Ensure the container has a positioning context */
+  }
+ 
+  .toggle-theme-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    z-index: 100; /* Higher than the navigation bar */
+  }
+ 
+  .dark-theme {
+    // Customize dark theme styles as needed
+    background-color: #333;
+    color: white;
+  }
+ 
+  // Your regular styles
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+  }

@@ -2,26 +2,58 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from './UserInterface';
 import { UserService } from '../../services/user.service';
+import { JwtService } from '../../../../services/jwt.service';
+import { FormComponent } from '../form/form.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.scss'
+  styleUrl: './user-profile.component.scss',
 })
-export class UserProfileComponent implements OnInit{
-
-  
-  
+export class UserProfileComponent implements OnInit {
   users!: User[];
   userForm!: FormGroup;
   newUserForm!: FormGroup;
+  userDetails: any;
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(
+    private userService: UserService,
+    private jwtService: JwtService,
+    private fb: FormBuilder,
+    private _dialog: MatDialog,
+    public authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.fetchUserDetails();
     this.createForms();
     this.getUsers();
+  }
 
+  openDialog() {
+    const dialogRef = this._dialog.open(FormComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.fetchUserDetails();
+        }
+      },
+    });
+  }
+
+  openEditForm(data: any) {
+    const dialogRef = this._dialog.open(FormComponent, {
+      data: data,
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.fetchUserDetails();
+        }
+      },
+    });
   }
 
   createForms(): void {
@@ -81,4 +113,19 @@ export class UserProfileComponent implements OnInit{
     });
   }
 
+  fetchUserDetails(): void {
+    this.jwtService.myDetails().subscribe({
+      next: (res) => {
+        this.userDetails = res;
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  logout(): void {
+    this.authService.logOut();
+  }
 }
