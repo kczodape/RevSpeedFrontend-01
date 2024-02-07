@@ -80,4 +80,10 @@ export class JwtService {
       responseType: 'text',
     });
   }
+
+  updateDetails(data: any): Observable<any> {
+    return this.http.put(BASE_URL + 'api/mydetails', data, {
+      headers: this.createAuhtorizationHeader() || {},
+    });
+  }
 }
