@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { error } from 'console';
 import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 
-// Updated SA key
+// Updated build
 // const BASE_URL = ['http://localhost:9898/'];
 
 const BASE_URL = ['http://34.70.138.168/'];
