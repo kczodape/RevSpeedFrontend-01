@@ -477,10 +477,11 @@ export class AdminService {
         );
   }
 
+  requestBody:any;
   createCustomerServiceLinkIndividual(customerId: number, individualId: number, durationDays: number): Observable<any> {
     const customerStatus = true;
 
-    const requestBody = {
+    this.requestBody = {
       customerId,
       individualId,
       durationDays,
@@ -492,7 +493,7 @@ export class AdminService {
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${this.serverApiUrl}/individual/create`, requestBody, { headers }).pipe(
+    return this.httpClient.post(`${this.serverApiUrl}/individual/create`, this.requestBody, { headers }).pipe(
       catchError((error: any) => {
         console.error('API request failed www:', error);
         return throwError(error);
@@ -503,7 +504,7 @@ export class AdminService {
   createCustomerServiceLinkBusiness(customerId: number, businessId: number, durationDays: number): Observable<any> {
     const customerStatus = true;
 
-    const requestBody = {
+    this.requestBody = {
       customerId,
       businessId,
       durationDays,
@@ -515,7 +516,7 @@ export class AdminService {
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${this.serverApiUrl}/business/create`, requestBody, { headers }).pipe(
+    return this.httpClient.post(`${this.serverApiUrl}/business/create`, this.requestBody, { headers }).pipe(
       catchError((error: any) => {
         console.error('API request failed:', error);
         return throwError(error);
@@ -526,7 +527,7 @@ export class AdminService {
   createCustomerServiceLinkEnglish(customerId: number, englishId: number): Observable<any> {
     const customerStatus = true;
     const durationDays = 28;
-    const requestBody = {
+    this.requestBody = {
       customerId,
       englishId,
       durationDays,
@@ -538,7 +539,7 @@ export class AdminService {
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${this.serverApiUrl}/english/create`, requestBody, { headers }).pipe(
+    return this.httpClient.post(`${this.serverApiUrl}/english/create`, this.requestBody, { headers }).pipe(
       catchError((error: any) => {
         console.error('API request failed:', error);
         return throwError(error);
@@ -549,7 +550,7 @@ export class AdminService {
   createCustomerServiceLinkHindi(customerId: number, hindiId: number): Observable<any> {
     const customerStatus = true;
     const durationDays = 28;
-    const requestBody = {
+    this.requestBody = {
       customerId,
       hindiId,
       durationDays,
@@ -561,7 +562,7 @@ export class AdminService {
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${this.serverApiUrl}/hindi/create`, requestBody, { headers }).pipe(
+    return this.httpClient.post(`${this.serverApiUrl}/hindi/create`, this.requestBody, { headers }).pipe(
       catchError((error: any) => {
         console.error('API request failed:', error);
         return throwError(error);
@@ -572,7 +573,7 @@ export class AdminService {
   createCustomerServiceLinkTamil(customerId: number, tamilId: number): Observable<any> {
     const customerStatus = true;
     const durationDays = 28;
-    const requestBody = {
+    this.requestBody = {
       customerId,
       tamilId,
       durationDays,
@@ -584,7 +585,7 @@ export class AdminService {
       'Content-Type': 'application/json',
     });
 
-    return this.httpClient.post(`${this.serverApiUrl}/tamil/create`, requestBody, { headers }).pipe(
+    return this.httpClient.post(`${this.serverApiUrl}/tamil/create`, this.requestBody, { headers }).pipe(
       catchError((error: any) => {
         console.error('API request failed:', error);
         return throwError(error);
