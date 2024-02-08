@@ -21,7 +21,7 @@
             <h5 class="mt-0">
               Give us a call
               <span>
-                <a href="tel:+1 905 593 1417">+1 905 593 1417</a>
+                <a >+91 8530278729</a>
               </span>
             </h5>
           </div>
@@ -34,7 +34,7 @@
             <h5 class="mt-0">
               Send us a Message
               <span style="padding-top: 0">
-                <p>infosybica.com</p>
+                <p>revspeed.org&commat;gmail.com</p>
               </span>
             </h5>
           </div>
@@ -45,10 +45,9 @@
           </div>
           <div class="media-body">
             <h5>
-              SYBICA Inc.
+              RevSpeed Inc.
               <span>
-                <a href="" target="_blank"
-                  >1810 Ironstone Dr, Burlington, <br />ON L7L 5V3, Canada.
+                <a> Teynampet, Chennai, TN <br />ON L7L 5V3, Canada.
                 </a>
               </span>
             </h5>
@@ -60,12 +59,12 @@
           <h5>Get Social With Us</h5>
           <ul class="soclai-icons">
             <li>
-              <a href="https://twitter.com/SYBICAINC" target="_blank">
+              <a >
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/company/SYBICA" target="_blank">
+              <a  >
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </li>
@@ -75,16 +74,18 @@
     </div>
     <div class="col-12 col-md-7 col-lg-7 order-1 order-md-2">
       <div class="master_form">
-        <form>
-            <input type="text" name="name" id="name" value="" aria-label="First name" placeholder="Your name"/>
-            <input name="email" id="email" type="email" value="" placeholder="Email address" />
-            <input name="phoneNumber" id="phoneNumber" type="text" placeholder="Phone number" />
-            <textarea name="textarea" id="textarea" placeholder="Write message" rows="10" cols="50" ></textarea>
-            <input type="submit" id="gform_submit_button_1" class="gform_button button" value="Submit" />
+        <form (ngSubmit)="submitForm()">
+          <input type="text" name="name" id="name" [(ngModel)]="formData.name" aria-label="First name" placeholder="Your name" required />
+          <input name="email" id="email" type="email" [(ngModel)]="formData.email" placeholder="Email address" required />
+          <input name="phoneNumber" id="phoneNumber" type="text" [(ngModel)]="formData.phoneNumber" placeholder="Phone number" />
+          <textarea name="textarea" id="textarea" [(ngModel)]="formData.message" placeholder="Write message" rows="10" cols="50" required></textarea>
+          <input type="submit" id="gform_submit_button_1" class="gform_button button" value="Submit" />
         </form>
       </div>
     </div>
   </div>
 </div>
-
+ 
 <app-footer></app-footer>
+ 
+ 

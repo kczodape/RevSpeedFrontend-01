@@ -79,6 +79,7 @@ import { HandelTamilAuthenticationDialogeComponent } from './components/landing/
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
+import { PopComponent } from './components/landing/contact/pop/pop.component';
 
 
 
@@ -131,6 +132,7 @@ import { CommonModule } from '@angular/common';
     HandelHindiAuthenticationDialogeComponent,
     TamilPaymentDialogeComponent,
     HandelTamilAuthenticationDialogeComponent,
+    PopComponent,
 
   ],
   imports: [
@@ -186,4 +188,4 @@ import { CommonModule } from '@angular/common';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

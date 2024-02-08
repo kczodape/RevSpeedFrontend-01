@@ -49,4 +49,8 @@ export class FormComponent {
       }
     }
   }
+
+  closeDialog():void{
+    this._dialogRef.close();
+  }
 }
