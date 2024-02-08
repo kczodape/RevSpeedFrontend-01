@@ -1,0 +1,98 @@
+<app-navbar></app-navbar>
+
+<div class="login">
+  <div class="svg">
+    <img src="assets/reg_svg.svg" alt />
+  </div>
+  <div class="line"></div>
+  <div class="login_form">
+    <h1>Sign Up</h1>
+    <form [formGroup]="registerForm" (submit)="submitForm()">
+      <div class="reg_inpt">
+        <div class="inpLabel">
+          <label for="name">Enter your name</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            placeholder="Name*"
+          />
+          <div class="validation" *ngIf="isFieldInvalid('name')">
+            Please enter your name!
+          </div>
+        </div>
+        <div class="inpLabel">
+          <label for="email">Enter your email</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            placeholder="Email*"
+          />
+          <div class="validation" *ngIf="isFieldInvalid('email') && isEmailExists()">
+            Please enter correct email!
+          </div>
+          <div class="validation" *ngIf="isFieldInvalid('email') && !isEmailExists()">
+            Email ID already exists. Please enter a different email.
+          </div>          
+        </div>
+      </div>
+      <div class="reg_inpt">
+        <div class="inpLabel">
+          <label for="password">Enter password</label>
+          <input
+            type="{{hidePassword ? 'password' : 'text'}}"
+            id="password"
+            formControlName="password"
+            placeholder="Password*"
+          />
+          <mat-icon class="eye" (click)="togglePasswordVisibility()">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+
+          <div class="validation" *ngIf="isFieldInvalid('password')">
+            Please enter your password!
+          </div>
+        </div>
+        <div class="inpLabel">
+          <label for="confirmPassword">Re-enter password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            placeholder="Confirm password*"
+          />
+          <div class="validation" *ngIf="isFieldInvalid('confirmPassword')">
+            Password does not match!
+          </div>
+        </div>
+      </div>
+      <div class="reg_inpt">
+        <div class="inpLabel">
+          <label for="phoneNumber">Enter your phone number</label>
+          <input
+            type="text"
+            id="phoneNumber"
+            formControlName="phoneNumber"
+            placeholder="Phone Number"
+          />
+          <div class="validation" *ngIf="isFieldInvalid('phoneNumber')">
+            Please enter your phone number!
+          </div>
+        </div>
+        <div class="inpLabel">
+          <label for="address">Enter your address</label>
+          <input
+            type="text"
+            id="address"
+            formControlName="address"
+            placeholder="Address"
+          />
+          <div class="validation" *ngIf="isFieldInvalid('address')">
+            Please enter your address!
+          </div>
+        </div>
+      </div>
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+    <p>Already have an account ? <a routerLink="/login">Sign in here</a></p>
+  </div>
+</div>

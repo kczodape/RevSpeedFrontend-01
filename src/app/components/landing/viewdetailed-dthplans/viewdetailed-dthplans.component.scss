@@ -1,0 +1,153 @@
+$primary-color: #f05e23;
+$secondary-color: #ff9a71;
+$background-color: #f8f8f8;
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+.container h1{
+    font-size: xx-large;
+}
+
+h1, h2 {
+  color: $primary-color;
+}
+
+.plans {
+  display: flex;
+  justify-content: space-between;
+
+  .plan {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+
+    h2 {
+      color: $primary-color;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 15px;
+      }
+    }
+  }
+//   .plan:hover {
+//     transform: scale(1.05);
+// }
+}
+
+.mat-elevation-z8 {
+  margin-top: 20px;
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #19212a;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: $background-color;
+    }
+
+    #btn1 {
+        background: linear-gradient(
+            90deg,
+            rgba(194, 29, 3, 1) 31%,
+            rgba(253, 87, 50, 1) 100%,
+            rgba(255, 183, 135, 1) 100%
+          );
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+
+.special-offers {
+  margin-top: 20px;
+
+  h2 {
+    color: $primary-color;
+    font-size: 24px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 20px;
+
+      strong {
+        font-weight: bold;
+        color: black;
+        font-size: 18px;
+      }
+
+      li p {
+        font-size: 18px;
+        line-height: 1.5;
+        // color: #555;
+      }
+    }
+  }
+}
+
+.mat-tab-group{
+  margin-top: 3%;
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.cta {
+    text-align: center;
+    margin-top: 40px;
+
+  h2 {
+    color: $primary-color;
+    font-size: 24px;
+  }
+}
+p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+@media screen and (max-width: 768px) {
+  .plans {
+    flex-direction: column;
+
+    .plan {
+      margin-bottom: 20px;
+    }
+  }
+}

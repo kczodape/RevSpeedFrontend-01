@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="login">
+    <div class="svg">
+        <!-- Add your image source here -->
+      <img src="assets/forgot_svg.svg" alt />
+    </div>
+    <div class="line"></div>
+    <div class="login_form">
+      <h1>Forgot Password</h1>
+    
+      <form [formGroup]="loginForm" (submit)="submitForm()">
+        <label for="email">Enter Email</label>
+        <input type="email" id="email" placeholder="Email*" formControlName="email" />
+        <div class="validation" *ngIf="isFieldInvalid('email')" style="color: red;">
+            Please enter correct email!
+        </div>
+          
+        <div class="btns">
+            <button class="signin" type="submit" (click)="openDialog('910ms', '750ms')" >Send OTP</button>
+        </div>
+      </form>
+      <div class="anchor">
+        <p>New user ? <a routerLink="/register">Sign Up here</a></p>
+        <p>Already have an account ? <a routerLink="/login">sign in here</a></p>
+      </div>
+    </div>
+  </div>

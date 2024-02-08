@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+<div class="containers">
+  <div class="hero-section">
+    <h1>Contact Us</h1>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center"><br>
+      <h1 class="like-h1">Contact Us Now</h1>
+      <p>
+        Questions or comments? We would love to help! Please fill out our handy
+        form and our team will respond promptly.
+      </p>
+    </div>
+    <div class="col-12 col-md-5 col-lg-5 order-2 order-md-1">
+      <div class="contect-details">
+        <div class="media">
+          <div class="media-img mr-3">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="media-body">
+            <h5 class="mt-0">
+              Give us a call
+              <span>
+                <a href="tel:+1 905 593 1417">+1 905 593 1417</a>
+              </span>
+            </h5>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-img mr-3">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="media-body">
+            <h5 class="mt-0">
+              Send us a Message
+              <span style="padding-top: 0">
+                <p>infosybica.com</p>
+              </span>
+            </h5>
+          </div>
+        </div>
+        <div class="media">
+          <div class="media-img mr-3">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="media-body">
+            <h5>
+              SYBICA Inc.
+              <span>
+                <a href="" target="_blank"
+                  >1810 Ironstone Dr, Burlington, <br />ON L7L 5V3, Canada.
+                </a>
+              </span>
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="social-sec">
+        <div class="social-links">
+          <h5>Get Social With Us</h5>
+          <ul class="soclai-icons">
+            <li>
+              <a href="https://twitter.com/SYBICAINC" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/SYBICA" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-7 col-lg-7 order-1 order-md-2">
+      <div class="master_form">
+        <form (ngSubmit)="submitForm()">
+          <input type="text" name="name" id="name" [(ngModel)]="formData.name" aria-label="First name" placeholder="Your name" required />
+          <input name="email" id="email" type="email" [(ngModel)]="formData.email" placeholder="Email address" required />
+          <input name="phoneNumber" id="phoneNumber" type="text" [(ngModel)]="formData.phoneNumber" placeholder="Phone number" />
+          <textarea name="textarea" id="textarea" [(ngModel)]="formData.message" placeholder="Write message" rows="10" cols="50" required></textarea>
+          <input type="submit" id="gform_submit_button_1" class="gform_button button" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

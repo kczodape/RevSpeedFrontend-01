@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Verify OTP</h2>
+<div mat-dialog-content class="dialog">
+    <div *ngIf="notMatched"><p class="errorMessage">{{message}}</p></div>
+  <p>Enter the OTP sent to your email.</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="enteredOTP" placeholder="Enter OTP" required>
+  </mat-form-field>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="cancel"><i style="color: red;" class="fa-regular fa-circle-xmark"></i></button>
+  <button mat-button (click)="verifyOTP()" class="update"><i style="color: green;" class="fa-solid fa-check"></i> </button>
+</mat-dialog-actions>
+  

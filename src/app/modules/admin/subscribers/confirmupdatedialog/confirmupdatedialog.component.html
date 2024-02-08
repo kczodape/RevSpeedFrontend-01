@@ -1,0 +1,5 @@
+<p>Confirm update ?</p>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="cancel"><i class="fa-regular fa-circle-xmark"></i></button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="openSnackBar()" class="update"><i class="fa-solid fa-check"></i></button>
+</mat-dialog-actions>

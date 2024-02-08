@@ -1,0 +1,78 @@
+// Custom styles for the footer
+footer {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+footer.text-lg-start {
+  background-color: #343a40;
+  color: #6c757d;
+}
+
+// Styling for the social media section
+section.d-flex {
+  justify-content: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid #6c757d;
+
+  // Center the content
+  .text-center {
+    display: flex;
+    align-items: center;
+  }
+
+  // Left side
+  .me-5 {
+    margin-right: 1.25rem; // Adjust the margin as needed
+  }
+
+  // Right side
+  .text-reset {
+    color: #6c757d;
+    font-size: 1.5rem; // Enlarge the font size
+    transition: color 0.3s ease; // Add smooth color transition
+    text-decoration: none;
+    &:hover {
+      color: #007bff; // Change color on hover
+      text-decoration: none;
+    }
+  }
+}
+
+// Styling for the copyright section
+.text-center.text-light.p-4 {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 1.2rem; // Enlarge the font size
+  a {
+    color: #007bff; // Change link color
+    text-decoration: none; // Remove underline
+    font-weight: bold;
+    transition: color 0.3s ease; // Add smooth color transition
+    &:hover {
+      color: #0056b3; // Change color on hover
+    }
+  }
+}
+a {
+  text-decoration: none;
+}
+
+.facebook-icon {
+  color: #4267b2;
+}
+.twitter-icon {
+  color: #1da1f2;
+}
+.google-icon {
+  color: #db4437;
+}
+.instagram-icon {
+  color: #e4405f;
+}
+.linkedin-icon {
+  color: #0077b5;
+}
+.github-icon {
+  color: #f7f5f5;
+}

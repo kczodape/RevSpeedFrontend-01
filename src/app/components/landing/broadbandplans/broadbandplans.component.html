@@ -1,0 +1,24 @@
+
+
+<h2>Popular BroadBand Plans!!!</h2>
+
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" >
+
+    <mat-tab label="Individual" class="custom-tab-label">
+        <div class="plan-tab-container">
+            <app-individualcards></app-individualcards>
+        </div> 
+    </mat-tab>
+
+    <mat-tab label="Business" class="custom-tab-label">
+        <div class="plan-tab-container">
+            <app-businesscards></app-businesscards>
+        </div>
+    </mat-tab>
+    
+</mat-tab-group>
+
+<div class="plan-tab-view-more">
+    <button mat-raised-button id="btn1" class="plan-tab-view-more-btn" routerLink="/viewmoreplan">View More Plans</button>
+</div> 
+
