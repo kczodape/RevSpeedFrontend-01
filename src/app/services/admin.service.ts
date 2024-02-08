@@ -11,7 +11,7 @@ import { Channel } from '../modules/admin/Interfaces/Channel';
 export class AdminService {
 
   private apiUrl = 'http://localhost:3000';
-  // private serverApiUrl = 'http://localhost:9898/api';
+  // private serverApiUrl = 'http://localhost:9898/api'; c
   // private serverUnauthenticatedApiUrlBroadband = 'http://localhost:9898/broadband';
   // private serverUnauthenticatedOttApi = 'http://localhost:9898/ott';
 
