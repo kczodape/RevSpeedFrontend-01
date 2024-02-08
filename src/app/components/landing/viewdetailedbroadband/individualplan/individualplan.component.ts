@@ -27,7 +27,7 @@ export class IndividualplanComponent implements AfterViewInit {
 
   }
 
-  displayedColumns: string[] = ['individualId', 'durationName', 'days', 'broadbandPlansName', 'speed', 'ottPlatform', 'price'];
+  displayedColumns: string[] = ['individualId', 'broadbandPlansName', 'speed', 'ottPlatform', 'durationName', 'days', 'price'];
   dataSource = new MatTableDataSource<IndividualInterface>();
   // ottPlatforms: { id: number; ott_platform: string }[] = [];
 

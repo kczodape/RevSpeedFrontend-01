@@ -10,6 +10,12 @@
       <td mat-cell *matCellDef="let element">{{ element.individualId }}</td>
     </ng-container>
 
+    <!-- Plan Name Column -->
+    <ng-container matColumnDef="broadbandPlansName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.broadbandPlansName }}</td>
+    </ng-container>
+
     <!-- Duration Column -->
     <ng-container matColumnDef="durationName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration</th>
@@ -22,12 +28,6 @@
       <td mat-cell *matCellDef="let element">{{ element.days }}</td>
     </ng-container>
 
-    <!-- Plan Name Column -->
-    <ng-container matColumnDef="broadbandPlansName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Plan Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.broadbandPlansName }}</td>
-    </ng-container>
-
     <!-- Speed Column -->
     <ng-container matColumnDef="speed">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Speed</th>
@@ -38,19 +38,14 @@
     <ng-container matColumnDef="ottPlatform">
       <th mat-header-cell *matHeaderCellDef>OTT Platform's</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button [matMenuTriggerFor]="ottPlatformMenu">
-          <mat-icon>keyboard_arrow_down</mat-icon>
-        </button>
-        <mat-menu #ottPlatformMenu="matMenu">
-          <mat-list>
-            <mat-list-item *ngFor="let platform of getOttPlatformsForDuration(element.durationName)">
-              {{ platform }}
-            </mat-list-item>
-          </mat-list>
-        </mat-menu>
+        <select>
+          <option *ngFor="let platform of getOttPlatformsForDuration(element.durationName)" [value]="platform">
+            {{ platform }}
+          </option>
+        </select>
       </td>
     </ng-container>
-
+    
 
 
     <!-- price Column -->

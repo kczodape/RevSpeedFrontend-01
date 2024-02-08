@@ -8,11 +8,13 @@ $background-color: #f8f8f8;
   padding: 20px;
   text-align: center;
 }
-.container h1{
-    font-size: xx-large;
+
+.container h1 {
+  font-size: xx-large;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: $primary-color;
 }
 
@@ -42,9 +44,10 @@ h1, h2 {
       }
     }
   }
-//   .plan:hover {
-//     transform: scale(1.05);
-// }
+
+  //   .plan:hover {
+  //     transform: scale(1.05);
+  // }
 }
 
 .mat-elevation-z8 {
@@ -55,7 +58,8 @@ h1, h2 {
     width: 100%;
     border-collapse: collapse;
 
-    th, td {
+    th,
+    td {
       border: 1px solid #ddd;
       padding: 12px;
       text-align: left;
@@ -71,12 +75,10 @@ h1, h2 {
     }
 
     #btn1 {
-        background: linear-gradient(
-            90deg,
-            rgba(194, 29, 3, 1) 31%,
-            rgba(253, 87, 50, 1) 100%,
-            rgba(255, 183, 135, 1) 100%
-          );
+      background: linear-gradient(90deg,
+          rgba(194, 29, 3, 1) 31%,
+          rgba(253, 87, 50, 1) 100%,
+          rgba(255, 183, 135, 1) 100%);
       color: #fff;
       padding: 8px 16px;
       border: none;
@@ -120,7 +122,7 @@ h1, h2 {
   }
 }
 
-.mat-tab-group{
+.mat-tab-group {
   margin-top: 3%;
   width: 96%;
   margin-left: auto;
@@ -129,18 +131,19 @@ h1, h2 {
 
 
 .cta {
-    text-align: center;
-    margin-top: 40px;
+  text-align: center;
+  margin-top: 40px;
 
   h2 {
     color: $primary-color;
     font-size: 24px;
   }
 }
+
 p {
-    font-size: 18px;
-    line-height: 1.5;
-  }
+  font-size: 18px;
+  line-height: 1.5;
+}
 
 @media screen and (max-width: 768px) {
   .plans {
@@ -150,4 +153,11 @@ p {
       margin-bottom: 20px;
     }
   }
+}
+
+mat-tab-group {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
 }
