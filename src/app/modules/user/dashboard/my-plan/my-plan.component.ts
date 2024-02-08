@@ -14,7 +14,7 @@ export class MyPlanComponent implements OnInit {
   customerHistory: any[] = [];
   isSmallScreen: boolean = false;
 
-  constructor(private adminService: AdminService, private jwtService: JwtService, private auth: AuthService, private router: Router) { }
+  constructor(private adminService: AdminService, private jwtService: JwtService, private auth: AuthService, private router: Router) { this.fetchCustomerHistory();}
 
   ngOnInit(): void {
     this.fetchCustomerHistory();

@@ -6,6 +6,7 @@ import { JwtService } from '../../../../services/jwt.service';
 import { FormComponent } from '../form/form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -23,7 +24,8 @@ export class UserProfileComponent implements OnInit {
     private jwtService: JwtService,
     private fb: FormBuilder,
     private _dialog: MatDialog,
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,10 +45,20 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  deleteUser(id: number): void {
-    this.userService.deleteUser(id).subscribe(() => {
-      this.fetchUserDetails();
+  deleteUser(): void {
+    this.jwtService.deleteDetails().subscribe({
+      next: (response) => {
+        // Handle successful response
+        console.log('User details deleted successfully:', response);
+        this.router.navigateByUrl("/login");
+      },
+      error: (error) => {
+        // Handle error response
+        console.error('Error deleting user details:', error);
+        this.router.navigateByUrl("/login");
+      },
     });
+    this.router.navigateByUrl("/login");
   }
 
   fetchUserDetails(): void {

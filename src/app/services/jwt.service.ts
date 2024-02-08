@@ -4,9 +4,9 @@ import { error } from 'console';
 import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 
 // Updated build
-// const BASE_URL = ['http://localhost:9898/'];
+const BASE_URL = ['http://localhost:9898/'];
 
-const BASE_URL = ['http://34.70.138.168/'];
+// const BASE_URL = ['http://34.70.138.168/'];
 
 @Injectable({
   providedIn: 'root',
@@ -88,5 +88,14 @@ export class JwtService {
     return this.http.put(BASE_URL + 'api/mydetails', data, {
       headers: this.createAuhtorizationHeader() || {},
     });
+  }
+  deleteDetails(): Observable<any> {
+    return this.http.put(
+      BASE_URL + 'api/mydetails/delete',
+      {},
+      {
+        headers: this.createAuhtorizationHeader() || {},
+      }
+    );
   }
 }

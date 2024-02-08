@@ -22,7 +22,7 @@ export class BusinessplanComponent implements AfterViewInit{
 
   constructor(private adminService: AdminService, public dialog: MatDialog) { }
 
-  displayedColumns: string[] = ['businessId', 'durationName', 'days', 'planType', 'speed', 'price'];
+  displayedColumns: string[] = ['businessId', 'planType', 'speed', 'durationName', 'days', 'price'];
   dataSource = new MatTableDataSource<IndividualInterface>();
 
   ngAfterViewInit() {
