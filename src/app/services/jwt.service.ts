@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 // Updated build
 // const BASE_URL = ['http://localhost:9898/'];
 
-const BASE_URL = ['http://34.123.184.12/'];
+const BASE_URL = ['http://34.27.124.145/'];
 
 @Injectable({
   providedIn: 'root',

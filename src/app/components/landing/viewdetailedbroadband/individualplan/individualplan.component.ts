@@ -67,7 +67,7 @@ export class IndividualplanComponent implements AfterViewInit {
   openDialog(planId: number, days: number) {
     this.myDetails();
     const customerIdFromSession = sessionStorage.getItem('customerId')
-    console.log("customerIdbbb ", customerIdFromSession);
+    console.log("customerId1 ", customerIdFromSession);
     sessionStorage.setItem('individualId', planId.toString());
     sessionStorage.setItem('durationDays', days.toString())
 

@@ -10,7 +10,7 @@ export class SubscribersService {
   // hi
   // private apiUrl = 'http://localhost:9898/login';
 
-  private apiUrl = 'http://34.123.184.12/login';
+  private apiUrl = 'http://34.27.124.145/login';
 
   constructor(private http: HttpClient) {}
 
