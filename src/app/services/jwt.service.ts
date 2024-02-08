@@ -98,4 +98,18 @@ export class JwtService {
       }
     );
   }
+
+  private apiUrll = `${BASE_URL}email/send`;
+  sendEmailforContact(toEmail: string, subject: string, body: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+ 
+    const requestBody = { toEmail, subject, body };
+ 
+    return this.http.post(this.apiUrll, requestBody, {
+      headers,
+      responseType: 'text',
+    });
+  }
 }
