@@ -16,7 +16,7 @@ export class BusinessComponent implements AfterViewInit {
 
   constructor(private adminService: AdminService) { }
 
-  displayedColumns: string[] = ['businessId', 'durationName', 'days', 'planType', 'speed', 'price'];
+  displayedColumns: string[] = ['businessId', 'planType', 'speed', 'durationName', 'days', 'price'];
   dataSource = new MatTableDataSource<IndividualInterface>();
 
   ngAfterViewInit() {
