@@ -15,9 +15,9 @@ export class AdminService {
   // private serverUnauthenticatedApiUrlBroadband = 'http://localhost:9898/broadband';
   // private serverUnauthenticatedOttApi = 'http://localhost:9898/ott';
 
-  private serverApiUrl = 'http://34.70.138.168/api';
-  private serverUnauthenticatedApiUrlBroadband = 'http://34.70.138.168/broadband';
-  private serverUnauthenticatedOttApi = 'http://34.70.138.168/ott';
+  private serverApiUrl = 'http://34.123.184.12/api';
+  private serverUnauthenticatedApiUrlBroadband = 'http://34.123.184.12/broadband';
+  private serverUnauthenticatedOttApi = 'http://34.123.184.12/ott';
   jwtToken: string | null = sessionStorage.getItem('jwt');
 
   constructor(private httpClient: HttpClient) { }
